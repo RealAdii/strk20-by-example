@@ -9,7 +9,7 @@ interface State {
 }
 
 const INITIAL_STATE: State = {
-  theme: "light",
+  theme: "dark",
   sideNav: true,
   initialized: false,
 }
@@ -53,7 +53,7 @@ export const Provider: React.FC<Props> = ({ children }) => {
   function init(params: { width: number }) {
     try {
       // @ts-ignore
-      const theme: Theme = localStorage.getItem("theme") || "light"
+      const theme: Theme = localStorage.getItem("theme") || "dark"
       let sideNav = params.width >= 500
       {
         const val = localStorage.getItem("sideNav")

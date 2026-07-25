@@ -26,6 +26,9 @@ const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <div className={styles.component}>
+      {/* ambient terminal texture — film grain + scanlines (brand) */}
+      <div className="strk-grain" aria-hidden="true" />
+      <div className="strk-scanlines" aria-hidden="true" />
       <div
         ref={ref}
         className={styles.sideNav}

@@ -1,14 +1,31 @@
 .component {
   width: 100%;
-  max-width: 920px;
+  max-width: 1080px;
 }
 
+/* ============================================================
+   Hero — display wordmark + gradient headline, one orange bloom
+   ============================================================ */
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 24px 0 8px 0;
+  padding: clamp(24px, 6vh, 64px) 0 8px 0;
+}
+
+/* the signature ambient bloom — one glow per surface */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% 30% -10%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 70% at 50% 20%,
+    rgba(197, 52, 0, 0.14),
+    transparent 60%
+  );
 }
 
 .heroLogo {
@@ -17,95 +34,190 @@
 
 .header {
   margin: 0;
+  position: relative;
 }
 
 .headerLink {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   text-decoration: none;
 }
 
+/* gradient-filled warm off-white display headline (brand hero treatment) */
 .byExample {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--color);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  font-size: clamp(30px, 5.6vw, 58px);
+  background: linear-gradient(178deg, #fffdf1 0%, #f4ece8 50%, #ffcdb6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* `light` is a global class set on <body> by the theme script — it must be
+   escaped, or CSS Modules hashes it and the override silently never matches. */
+:global(body.light) .byExample {
+  background: linear-gradient(178deg, #241a14 0%, #3a2a20 50%, #7a3411 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-.header a,
-.header a:visited {
-  text-decoration: none;
-  color: var(--color);
-}
-
+/* eyebrow — mono, tracked wide, orange ◢ tick */
 .subHeader {
-  margin-top: 12px;
+  position: relative;
+  margin-top: 18px;
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--accent-strong);
+  letter-spacing: 0.32em;
+  color: var(--color-faint);
+}
+.tick {
+  color: var(--accent);
+  letter-spacing: 0;
 }
 
 .intro {
-  max-width: 560px;
-  margin: 18px 0 0 0;
+  position: relative;
+  max-width: 620px;
+  margin: 20px 0 0 0;
   color: var(--color-muted);
+  font-size: 16.5px;
 }
 
+/* micro/meta copy reads like a filing — mono, sharp, hairline */
 .updates {
-  margin-top: 20px;
-  padding: 6px 16px;
+  position: relative;
+  margin-top: 26px;
+  padding: 7px 16px;
   border: 1px solid var(--border-color);
-  border-radius: 999px;
+  border-radius: var(--r-sm);
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
-  background-color: var(--side-nav-color);
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-faint);
+  background-color: var(--bg-raised);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+  flex-shrink: 0;
 }
 
 .search {
-  margin: 26px 0 34px 0;
+  position: relative;
+  margin: 30px 0 clamp(36px, 6vh, 60px) 0;
   width: 100%;
-  max-width: 560px;
+  max-width: 580px;
 }
 
+/* ============================================================
+   Bento grid — flat dark panels, corner glow, ghost numerals
+   ============================================================ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 20px;
   align-items: start;
   width: 100%;
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 20px 22px 14px 22px;
-  background-color: var(--bg-color);
+  border-radius: var(--r-sharp);
+  padding: 22px 24px 16px 24px;
+  background:
+    radial-gradient(ellipse 70% 80% at 12% 0%, rgba(197, 52, 0, 0.13), transparent 60%),
+    linear-gradient(165deg, #181818 0%, #141414 48%, #100c0a 100%);
+  transition:
+    transform 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+:global(body.light) .card {
+  background:
+    radial-gradient(ellipse 70% 80% at 12% 0%, rgba(197, 52, 0, 0.09), transparent 60%),
+    linear-gradient(165deg, #fffdf1 0%, #faf6ea 48%, #f5ede0 100%);
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 52, 0, 0.5);
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7);
+}
+
+/* oversized ghost numeral bleeding off the top-right, cropped by overflow */
+.ghostNum {
+  position: absolute;
+  top: -0.36em;
+  right: -0.03em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(62px, 6.2vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(197, 52, 0, 0.14);
+  pointer-events: none;
+  user-select: none;
+  transition:
+    transform 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+.card:hover .ghostNum {
+  transform: translate(3px, -3px);
+  color: rgba(197, 52, 0, 0.22);
 }
 
 .category {
-  margin: 0 0 10px 0;
-  font-size: 17px;
-  font-weight: 700;
+  /* sits over the ghost numeral, which is faint enough to read as texture —
+     reserving a gutter for it just orphans words off long titles */
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px 0;
+  /* nav titles carry an authored "\n" — break where they intend to */
+  white-space: pre-line;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: var(--color);
 }
 
 .groupTitle {
-  margin: 18px 0 8px 0;
+  position: relative;
+  margin: 20px 0 8px 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-muted);
+  letter-spacing: 0.28em;
+  color: var(--color-faint);
+}
+.groupTitle::before {
+  content: "◢ ";
+  color: var(--accent);
+  letter-spacing: 0;
 }
 
 .list {
+  position: relative;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -117,28 +229,61 @@
 
 .listItem a,
 .listItem a:visited {
-  display: block;
-  padding: 6px 8px;
-  margin: 0 -8px;
-  border-radius: 8px;
-  color: var(--link-color);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--color-muted);
   text-decoration: none;
   font-size: 14.5px;
+  transition: color 0.15s var(--ease);
+}
+
+/* the → glyph signals forward nav and nudges on hover */
+.listItem a::after {
+  content: "→";
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease);
 }
 
 .listItem a:hover {
-  background-color: var(--accent-soft);
-  color: var(--hover-color-1);
+  color: var(--color);
+}
+.listItem a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
+/* ============================================================
+   Search results
+   ============================================================ */
 .searchResultList {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 560px;
+  max-width: 620px;
+  border-top: 1px solid var(--border-color);
+}
+.searchResultList .listItem a {
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 15px;
 }
 
 .noResults {
   text-align: center;
-  color: var(--color-muted);
+  color: var(--color-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  padding: 30px 0;
 }

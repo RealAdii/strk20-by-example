@@ -8,8 +8,14 @@
   overflow-y: auto;
   overflow-x: hidden;
   background-color: var(--side-nav-color);
-  transition: width 0.3s;
-  transition-timing-function: ease;
+  /* one faint orange bloom at the top of the rail */
+  background-image: radial-gradient(
+    ellipse 90% 40% at 0% 0%,
+    var(--accent-soft),
+    transparent 60%
+  );
+  background-repeat: no-repeat;
+  transition: width 0.3s var(--ease);
   flex-shrink: 0;
 }
 .main {
@@ -25,5 +31,5 @@
   flex-direction: column;
   align-items: center;
   min-width: var(--min-main-width);
-  padding: 40px 24px 24px 24px;
+  padding: 44px clamp(20px, 4vw, 44px) 24px;
 }

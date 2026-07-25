@@ -8,7 +8,8 @@ import { search, unique } from "../lib/search"
 import styles from "./index.module.css"
 import { ROUTES, ROUTES_BY_CATEGORY } from "../nav"
 
-const UPDATES = ["2026/07/08 - First release"]
+// Micro/meta copy reads like a filing (brand voice).
+const UPDATES = ["Release · 2026.07.08", "Status · Live"]
 
 export default function HomePage() {
   const [query, setQuery] = useState("")
@@ -80,6 +81,9 @@ export default function HomePage() {
       <div className={styles.grid}>
         {ROUTES_BY_CATEGORY.map(({ routes = [], groups = [], title }, i) => (
           <section className={styles.card} key={i}>
+            <span className={styles.ghostNum} aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
             <h3 className={styles.category}>{title || "Concepts"}</h3>
 
             {routes.length > 0 && (
@@ -119,11 +123,13 @@ export default function HomePage() {
       <div className={styles.hero}>
         <h1 className={styles.header}>
           <a href="/" className={styles.headerLink}>
-            <Strk20 size={72} className={styles.heroLogo} />
+            <Strk20 size={64} className={styles.heroLogo} />
             <span className={styles.byExample}>by Example</span>
           </a>
         </h1>
-        <div className={styles.subHeader}>Starknet Privacy</div>
+        <div className={styles.subHeader}>
+          <span className={styles.tick}>◢</span> Starknet Privacy
+        </div>
         <p className={styles.intro}>
           An introduction to{" "}
           <a href="https://docs.starknet.io/build/starknet-privacy/overview">
@@ -134,9 +140,8 @@ export default function HomePage() {
         </p>
 
         <div className={styles.updates}>
-          {UPDATES.map((text, i) => (
-            <div key={i}>{text}</div>
-          ))}
+          <span className={styles.statusDot} aria-hidden="true" />
+          {UPDATES.join("  /  ")}
         </div>
 
         <div className={styles.search}>

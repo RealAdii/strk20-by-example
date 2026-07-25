@@ -6,14 +6,14 @@ interface Props {
   className?: string
 }
 
-// STRK[20] wordmark. The artwork has white lettering, so light mode uses an
-// ink-recolored variant of the same logo.
+// STRK[20] wordmark from the brand kit — vector, so it stays crisp at any size.
+// STRK is set in the surface's own ink; the bracketed [20] stays orange.
 const Strk20: React.FC<Props> = ({ size, className = "" }) => {
   const { state } = useAppContext()
 
   return (
     <img
-      src={state.theme === "dark" ? "/strk20-logo.png" : "/strk20-logo-ink.png"}
+      src={state.theme === "dark" ? "/strk20-logo.svg" : "/strk20-logo-onlight.svg"}
       alt="STRK20"
       height={size}
       style={{ height: size, width: "auto", display: "block" }}

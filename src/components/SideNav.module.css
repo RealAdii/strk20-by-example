@@ -5,33 +5,46 @@
 }
 .nestedList {
   list-style: none;
-  padding: 0 0 0 8px;
-  margin: 0 0 12px 0;
+  padding: 0 0 0 10px;
+  margin: 0 0 14px 0;
+  border-left: 1px solid var(--border-subtle);
 }
+
+/* Category kickers — mono, tracked wide, with the orange ◢ tick (brand eyebrow) */
 .category,
 .title {
-  color: var(--color-muted);
+  color: var(--color-faint);
   padding: 0 10px;
-  margin: 22px 0 8px 0;
+  margin: 26px 0 10px 0;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.28em;
   line-height: 1.6;
+}
+.category::before,
+.title::before {
+  content: "◢ ";
+  color: var(--accent);
+  letter-spacing: 0;
 }
 .category {
   margin-top: 4px;
 }
 .group {
-  margin: 12px 0 14px 0;
+  margin: 14px 0 16px 0;
 }
 .groupTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
   color: var(--color);
   padding: 0;
-  margin: 0 0 2px 10px;
+  margin: 0 0 5px 10px;
   font-size: 13px;
-  font-weight: 600;
+  line-height: 1.1;
 }
 .listItem,
 .listItemActive {
@@ -39,14 +52,16 @@
   flex-direction: row;
   align-items: center;
   margin: 1px 0;
-  border-radius: 8px;
+  border-radius: var(--r-sharp);
+  transition: background-color 0.15s var(--ease);
 }
 .listItem:hover {
-  background-color: color-mix(in srgb, var(--color) 6%, transparent);
+  background-color: color-mix(in srgb, var(--color) 5%, transparent);
+  box-shadow: inset 2px 0 0 var(--border-color);
 }
 .listItemActive {
-  background-color: var(--link-active-color);
-  box-shadow: inset 3px 0 0 var(--accent);
+  background: linear-gradient(90deg, var(--link-active-color), transparent 85%);
+  box-shadow: inset 2px 0 0 var(--accent);
 }
 .link {
   font-size: 13.5px;
@@ -57,6 +72,7 @@
   display: block;
   width: 100%;
   padding: 6px 10px;
+  transition: color 0.15s var(--ease);
 }
 .listItem .link,
 .listItem .link:visited {

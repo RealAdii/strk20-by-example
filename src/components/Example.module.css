@@ -5,11 +5,21 @@
 .content {
   margin: 15px 10px 15px 10px;
 }
+
+/* Page title — display, uppercase, tight, with an orange top rule above it */
 .title {
-  font-size: 34px;
-  font-weight: 700;
-  margin: 0 0 10px 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  font-size: clamp(28px, 4.4vw, 50px);
+  text-wrap: balance;
+  margin: 0 0 12px 0;
+  padding-top: 18px;
+  border-top: 2px solid var(--accent);
 }
+
 /* Keep prose at a readable measure; code blocks and tables stay wide. */
 .content p,
 .content ul,
@@ -20,37 +30,62 @@
 .content h4 {
   max-width: 72ch;
 }
-.sourceLink {
-  font-style: italic;
-  font-size: 14.5px;
-  color: var(--color-muted);
-  margin-bottom: 6px;
+.content h2,
+.content h3 {
+  max-width: 60ch;
 }
+
+/* source pointer reads as a mono technical accent, not italic prose */
+.sourceLink {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-faint);
+  margin-bottom: 28px;
+}
+.sourceLink a,
+.sourceLink a:visited {
+  color: var(--accent-strong);
+  text-decoration-color: transparent;
+}
+.sourceLink a:hover {
+  text-decoration-color: var(--accent-strong);
+}
+
 .prevNext {
-  margin: 48px 0 12px 0;
-  padding-top: 22px;
+  margin: 56px 0 12px 0;
+  padding-top: 24px;
   border-top: 1px solid var(--border-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 .prevLink,
 .nextLink {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 12px 18px;
+  gap: 4px;
+  padding: 14px 20px;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: var(--r-sharp);
   text-decoration: none;
-  min-width: 180px;
-  transition: border-color 0.15s ease;
+  min-width: 190px;
+  background: linear-gradient(165deg, var(--bg-raised) 0%, var(--bg-color) 100%);
+  transition:
+    border-color 0.2s var(--ease),
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
 }
 .prevLink:hover,
 .nextLink:hover {
-  border-color: var(--accent);
+  border-color: rgba(197, 52, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
 }
 .nextLink {
   align-items: flex-end;
@@ -59,14 +94,23 @@
 }
 .pagerLabel {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-muted);
+  letter-spacing: 0.28em;
+  color: var(--color-faint);
+  transition: color 0.2s var(--ease);
+}
+.prevLink:hover .pagerLabel,
+.nextLink:hover .pagerLabel {
+  color: var(--accent-strong);
 }
 .pagerTitle {
-  color: var(--link-color);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--color);
   font-size: 15px;
 }

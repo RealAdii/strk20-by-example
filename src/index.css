@@ -1,57 +1,124 @@
-:root {
-  --black: #1c1815;
-  --side-nav-width: 260px;
-  --min-main-width: 300px;
+/* ============================================================
+   STRK20 by Example — STRK20 brand system
+   Dark, terminal, industrial. Near-black canvas, ONE orange accent.
+   Tokens mirror strk20.starknet.io /brand/tokens.json
+   ============================================================ */
 
-  /* Original Solidity by Example font stacks */
-  --font-body:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --font-display: var(--font-body);
-  --font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+/* --- brand faces: Unison Pro (display), Neue Montreal (body), GT America Mono (labels) --- */
+@font-face {
+  font-family: "Unison Pro";
+  src: url("/fonts/UnisonPro-Bold.woff2") format("woff2");
+  font-weight: 700 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("/fonts/PPNouvelMontreal-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("/fonts/PPNouvelMontreal-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("/fonts/PPNouvelMontreal-Bold.woff2") format("woff2");
+  font-weight: 600 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url("/fonts/GTAmericaMono-Regular.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url("/fonts/GTAmericaMono-Bold.woff2") format("woff2");
+  font-weight: 600 700;
+  font-display: swap;
 }
 
-/* STRK20 brand (strk20.starknet.io): dark-first, near-black + burnt orange.
-   Light mode is the warm-paper counterpart with the same orange. */
+:root {
+  --side-nav-width: 272px;
+  --min-main-width: 300px;
+
+  --font-display: "Unison Pro", "Neue Montreal", "Helvetica Neue", sans-serif;
+  --font-body: "Neue Montreal", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "GT America Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* brand accent — the only hue on the site */
+  --accent: #c53400;
+  --accent-strong: #a02a00;
+  --glow: rgba(197, 52, 0, 0.55);
+
+  /* signature easing + radii (corners are mostly sharp) */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --r-sharp: 0px;
+  --r-sm: 2px;
+  --r-pill: 999px;
+}
+
+/* ---------- DARK (default / brand-primary) ---------- */
+body.dark {
+  --bg-color: #0d0d0d;
+  --bg-raised: #141414;
+  --bg-raised-2: #1a1a1a;
+  --color: #fafafa;
+  --color-muted: rgba(250, 250, 250, 0.65);
+  --color-faint: #616161;
+  --color-1: #fafafa;
+  --hover-color-1: #ffffff;
+  --code-bg: #101010;
+  /* a lighter tint of the SAME accent hue — needed for legible inline link text */
+  --link-color: #ff6a33;
+  --accent: #c53400;
+  --accent-strong: #ff6a33;
+  --accent-soft: rgba(197, 52, 0, 0.13);
+  --input-bg: #141414;
+  --link-active-color: rgba(197, 52, 0, 0.13);
+  --border-color: #262626;
+  --border-subtle: rgba(250, 250, 250, 0.05);
+  --side-nav-color: #0a0a0a;
+  --scrollbar-thumb: #2e2e2e;
+  --table-border-color: #262626;
+  --table-header-bg: #161616;
+  --table-row-alt-bg: #121212;
+  --grain-opacity: 0.04;
+  /* softer than the marketing site's 0.35 — large display type sits on light
+     fills here, where heavier scanlines read as banding rather than texture */
+  --scanline-opacity: 0.18;
+}
+
+/* ---------- LIGHT (warm-paper counterpart, same single accent) ---------- */
 body.light {
-  --bg-color: #faf8f5;
-  --color: #1c1815;
+  --bg-color: #fffdf1;
+  --bg-raised: #f7f3e6;
+  --bg-raised-2: #f2ede0;
+  --color: #14100e;
   --color-muted: #6b645c;
-  --color-1: #1c1815;
+  --color-faint: #8c847a;
+  --color-1: #14100e;
   --hover-color-1: #000000;
-  --code-bg: #f3f0ea;
+  --code-bg: #f7f3e6;
   --link-color: #b83500;
   --accent: #c53400;
   --accent-strong: #9e2a00;
   --accent-soft: rgba(197, 52, 0, 0.1);
-  --input-bg: #f1ede6;
+  --input-bg: #f7f3e6;
   --link-active-color: rgba(197, 52, 0, 0.1);
-  --border-color: #e6e1d8;
-  --side-nav-color: #f4f1eb;
-  --scrollbar-thumb: #d6d0c6;
-  --table-border-color: #e2ddd3;
-  --table-header-bg: #f3f0ea;
-  --table-row-alt-bg: #f6f3ee;
-}
-body.dark {
-  --bg-color: #0d0d0d;
-  --color: #e8e4e0;
-  --color-muted: #9b9591;
-  --color-1: #d9d4d0;
-  --hover-color-1: #ffffff;
-  --code-bg: #141414;
-  --link-color: #ff7a45;
-  --accent: #ff4d12;
-  --accent-strong: #ff7a45;
-  --accent-soft: rgba(255, 77, 18, 0.14);
-  --input-bg: #1a1a1a;
-  --link-active-color: rgba(255, 77, 18, 0.14);
-  --border-color: #272727;
-  --side-nav-color: #111111;
-  --scrollbar-thumb: #3a3a3a;
-  --table-border-color: #2a2a2a;
-  --table-header-bg: #1a1a1a;
-  --table-row-alt-bg: #141414;
+  --border-color: #e0d9c6;
+  --border-subtle: rgba(20, 16, 14, 0.06);
+  --side-nav-color: #faf6ea;
+  --scrollbar-thumb: #d8d0bc;
+  --table-border-color: #e0d9c6;
+  --table-header-bg: #f2ede0;
+  --table-row-alt-bg: #faf6ea;
+  --grain-opacity: 0.025;
+  --scanline-opacity: 0;
 }
 
 /* custom scroll */
@@ -61,9 +128,12 @@ body.dark {
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb);
-  border-radius: 8px;
-  border: 2px solid transparent;
+  border-radius: 0;
+  border: 3px solid transparent;
   background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -83,42 +153,106 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 77, 18, 0.3);
+  background: var(--accent);
+  color: #1a0a04;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: var(--r-sm);
 }
 
+/* ============================================================
+   Ambient texture — film grain + scanlines (the terminal feel).
+   Fixed, non-interactive overlays owned by Layout.
+   ============================================================ */
+.strk-grain,
+.strk-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+.strk-grain {
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 8s steps(6) infinite;
+}
+.strk-scanlines {
+  opacity: var(--scanline-opacity);
+  mix-blend-mode: multiply;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 3px,
+    rgba(0, 0, 0, 0.18) 3px 4px
+  );
+}
+@keyframes grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -3%);
+  }
+  60% {
+    transform: translate(-2%, -2%);
+  }
+  80% {
+    transform: translate(3%, 1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ============================================================
+   Typography — display headlines uppercase & tight, mono h4 labels
+   ============================================================ */
 h1,
 h2,
-h3,
-h4 {
+h3 {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 44px 0 14px 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  margin: 52px 0 16px 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-subtle);
 }
 h3 {
-  font-size: 20px;
+  font-size: clamp(18px, 1.6vw, 22px);
+  margin: 34px 0 10px 0;
+}
+h4 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
   font-weight: 600;
-  margin: 32px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-faint);
+  margin: 28px 0 8px 0;
 }
 h2:first-child,
 h3:first-child {
   margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 em {
   font-style: italic;
 }
 strong {
   font-weight: 600;
+  color: var(--color);
 }
 
 a,
@@ -126,22 +260,51 @@ a:visited {
   color: var(--link-color);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  text-decoration-color: color-mix(in srgb, var(--link-color) 45%, transparent);
-  transition: text-decoration-color 0.15s ease;
+  text-decoration-color: color-mix(in srgb, var(--link-color) 40%, transparent);
+  transition: text-decoration-color 0.15s var(--ease);
 }
 a:hover {
   text-decoration-color: var(--link-color);
 }
 
+/* blockquote — a hairline orange rule, terminal aside */
+blockquote {
+  margin: 22px 0;
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid var(--accent);
+  color: var(--color-muted);
+}
+blockquote > :first-child {
+  margin-top: 0;
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 40px 0;
+}
+
+/* ============================================================
+   Code — flat dark panel, hairline border, sharp corners
+   ============================================================ */
 pre {
-  padding: 16px 18px;
-  margin: 18px 0;
+  padding: 18px 20px;
+  margin: 20px 0;
   font-size: 13.5px;
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: auto;
-  border-radius: 10px;
+  border-radius: var(--r-sharp);
   border: 1px solid var(--border-color);
   background-color: var(--code-bg);
+  /* one subtle orange bloom per surface */
+  background-image: radial-gradient(
+    ellipse 60% 70% at 0% 0%,
+    var(--accent-soft),
+    transparent 60%
+  );
 }
 
 pre .buttons {
@@ -158,7 +321,7 @@ pre .buttons button {
   cursor: inherit;
 }
 pre .buttons button:hover {
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 code {
   font-family: var(--font-mono);
@@ -167,9 +330,10 @@ code {
 :not(pre) > code {
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   padding: 1px 5px;
   font-size: 0.85em;
+  color: var(--color);
 }
 .language-solidity,
 .language-cairo,
@@ -181,7 +345,7 @@ code {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 18px 0 28px 0;
+  margin: 20px 0 30px 0;
   table-layout: auto;
   font-size: 15px;
 }
@@ -189,194 +353,180 @@ table {
 th,
 td {
   border: 1px solid var(--table-border-color);
-  padding: 10px 12px;
+  padding: 11px 13px;
   text-align: left;
   vertical-align: top;
 }
 
 th {
   background-color: var(--table-header-bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
 }
 
 tr:nth-child(even) td {
   background-color: var(--table-row-alt-bg);
 }
 
-/* Code highlighting. Cairo is highlighted through the Rust grammar; keep the
-   base text neutral so snippets do not render as a wall of red. */
-body.light .hljs {
-  background: var(--code-bg);
-  color: #24292f;
+/* ============================================================
+   Syntax highlighting — warm monochrome + the single orange hue.
+   The stock GitHub theme (purple/blue/green) breaks the "one accent"
+   rule, so Cairo/TS snippets are retoned to the terminal palette.
+   ============================================================ */
+body.dark .hljs {
+  background: transparent;
+  color: #d6d1cc;
+}
+body.dark .hljs-keyword,
+body.dark .hljs-selector-tag,
+body.dark .hljs-meta .hljs-keyword,
+body.dark .hljs-doctag,
+body.dark .hljs-template-tag,
+body.dark .hljs-section {
+  color: #ff6a33;
+  font-weight: 500;
+}
+body.dark .hljs-title,
+body.dark .hljs-title.function_,
+body.dark .hljs-title.class_,
+body.dark .hljs-title.class_.inherited__ {
+  color: #fafafa;
+  font-weight: 600;
+}
+body.dark .hljs-type,
+body.dark .hljs-built_in,
+body.dark .hljs-name,
+body.dark .hljs-tag,
+body.dark .hljs-symbol {
+  color: #ff9e6b;
+}
+body.dark .hljs-attr,
+body.dark .hljs-attribute,
+body.dark .hljs-variable,
+body.dark .hljs-template-variable,
+body.dark .hljs-params,
+body.dark .hljs-property,
+body.dark .hljs-selector-attr,
+body.dark .hljs-selector-class,
+body.dark .hljs-selector-id {
+  color: #d6d1cc;
+}
+body.dark .hljs-string,
+body.dark .hljs-regexp,
+body.dark .hljs-meta .hljs-string {
+  color: #c8b8a8;
+}
+body.dark .hljs-number,
+body.dark .hljs-literal,
+body.dark .hljs-bullet,
+body.dark .hljs-operator,
+body.dark .hljs-meta {
+  color: #ffc09a;
+}
+body.dark .hljs-comment,
+body.dark .hljs-quote,
+body.dark .hljs-code,
+body.dark .hljs-formula {
+  color: #616161;
+  font-style: italic;
+}
+body.dark .hljs-subst,
+body.dark .hljs-punctuation {
+  color: #8c8580;
+}
+body.dark .hljs-emphasis {
+  font-style: italic;
+}
+body.dark .hljs-strong {
+  font-weight: 700;
+}
+body.dark .hljs-addition {
+  color: #d6d1cc;
+  background-color: rgba(197, 52, 0, 0.16);
+}
+body.dark .hljs-deletion {
+  color: #8c8580;
+  background-color: rgba(250, 250, 250, 0.06);
 }
 
+body.light .hljs {
+  background: transparent;
+  color: #2b241f;
+}
 body.light .hljs-keyword,
 body.light .hljs-selector-tag,
 body.light .hljs-meta .hljs-keyword,
 body.light .hljs-doctag,
-body.light .hljs-template-tag {
-  color: #cf222e;
+body.light .hljs-template-tag,
+body.light .hljs-section {
+  color: #b83500;
+  font-weight: 500;
 }
-
 body.light .hljs-title,
 body.light .hljs-title.function_,
 body.light .hljs-title.class_,
-body.light .hljs-section {
-  color: #8250df;
+body.light .hljs-title.class_.inherited__ {
+  color: #14100e;
+  font-weight: 600;
 }
-
 body.light .hljs-type,
 body.light .hljs-built_in,
 body.light .hljs-name,
-body.light .hljs-tag {
-  color: #953800;
+body.light .hljs-tag,
+body.light .hljs-symbol {
+  color: #8f3b12;
 }
-
 body.light .hljs-attr,
 body.light .hljs-attribute,
 body.light .hljs-variable,
 body.light .hljs-template-variable,
 body.light .hljs-params,
-body.light .hljs-property {
-  color: #0550ae;
+body.light .hljs-property,
+body.light .hljs-selector-attr,
+body.light .hljs-selector-class,
+body.light .hljs-selector-id {
+  color: #2b241f;
 }
-
 body.light .hljs-string,
 body.light .hljs-regexp,
-body.light .hljs-symbol,
 body.light .hljs-meta .hljs-string {
-  color: #0a3069;
+  color: #6b5540;
 }
-
 body.light .hljs-number,
 body.light .hljs-literal,
 body.light .hljs-bullet,
-body.light .hljs-operator {
-  color: #116329;
+body.light .hljs-operator,
+body.light .hljs-meta {
+  color: #8a4a1d;
 }
-
 body.light .hljs-comment,
 body.light .hljs-quote,
 body.light .hljs-code,
 body.light .hljs-formula {
-  color: #6e7781;
+  color: #8c847a;
   font-style: italic;
 }
-
+body.light .hljs-subst,
+body.light .hljs-punctuation {
+  color: #6b645c;
+}
 body.light .hljs-emphasis {
-  color: #24292f;
   font-style: italic;
 }
-
 body.light .hljs-strong {
-  color: #24292f;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 body.light .hljs-addition {
-  color: #116329;
-  background-color: #dafbe1;
+  color: #2b241f;
+  background-color: rgba(197, 52, 0, 0.12);
 }
-
 body.light .hljs-deletion {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-
-body.dark .hljs {
-  color: #c9d1d9;
-  background: var(--code-bg);
-}
-
-body.dark .hljs-doctag,
-body.dark .hljs-keyword,
-body.dark .hljs-meta .hljs-keyword,
-body.dark .hljs-template-tag,
-body.dark .hljs-template-variable {
-  color: #ff7b72;
-}
-
-body.dark .hljs-title,
-body.dark .hljs-title.class_,
-body.dark .hljs-title.class_.inherited__,
-body.dark .hljs-title.function_ {
-  color: #d2a8ff;
-}
-
-body.dark .hljs-attr,
-body.dark .hljs-attribute,
-body.dark .hljs-literal,
-body.dark .hljs-meta,
-body.dark .hljs-number,
-body.dark .hljs-operator,
-body.dark .hljs-variable,
-body.dark .hljs-selector-attr,
-body.dark .hljs-selector-class,
-body.dark .hljs-selector-id {
-  color: #79c0ff;
-}
-
-body.dark .hljs-regexp,
-body.dark .hljs-string,
-body.dark .hljs-meta .hljs-string {
-  color: #a5d6ff;
-}
-
-body.dark .hljs-built_in,
-body.dark .hljs-symbol,
-body.dark .hljs-type {
-  color: #ffa657;
-}
-
-body.dark .hljs-comment,
-body.dark .hljs-code,
-body.dark .hljs-formula {
-  color: #8b949e;
-  font-style: italic;
-}
-
-body.dark .hljs-name,
-body.dark .hljs-quote,
-body.dark .hljs-selector-tag,
-body.dark .hljs-selector-pseudo {
-  color: #7ee787;
-}
-
-body.dark .hljs-subst,
-body.dark .hljs-punctuation,
-body.dark .hljs-params,
-body.dark .hljs-property,
-body.dark .hljs-tag {
-  color: #c9d1d9;
-}
-
-body.dark .hljs-section {
-  color: #1f6feb;
-  font-weight: bold;
-}
-
-body.dark .hljs-bullet {
-  color: #f2cc60;
-}
-
-body.dark .hljs-emphasis {
-  color: #c9d1d9;
-  font-style: italic;
-}
-
-body.dark .hljs-strong {
-  color: #c9d1d9;
-  font-weight: bold;
-}
-
-body.dark .hljs-addition {
-  color: #aff5b4;
-  background-color: #033a16;
-}
-
-body.dark .hljs-deletion {
-  color: #ffdcd7;
-  background-color: #67060c;
+  color: #6b645c;
+  background-color: rgba(20, 16, 14, 0.06);
 }
 
 /* copy */
@@ -384,7 +534,7 @@ body.dark .hljs-deletion {
   position: relative;
   /* set to 100% to enable y scroll */
   height: 100%;
-  margin: 18px 0;
+  margin: 20px 0;
 }
 .copy-wrapper pre {
   margin: 0;
@@ -395,14 +545,24 @@ body.dark .hljs-deletion {
   right: 0px;
   margin-top: 10px;
   margin-right: 12px;
-  color: var(--color-muted);
+  color: var(--color-faint);
   background-color: transparent;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   cursor: pointer;
   padding: 4px;
 }
 .copy:hover {
   color: var(--accent-strong);
   transition: color linear 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
 }

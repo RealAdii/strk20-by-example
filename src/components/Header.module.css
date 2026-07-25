@@ -6,11 +6,28 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px 10px 20px;
-  background-color: var(--bg-color);
+  padding: 12px 20px;
+  background-color: color-mix(in srgb, var(--bg-color) 88%, transparent);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   min-width: var(--min-main-width);
   white-space: nowrap;
+}
+
+/* single hairline orange rule pinned to the top edge — brand top-accent */
+.component::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 35%,
+    var(--accent) 65%,
+    transparent
+  );
+  opacity: 0.55;
 }
 
 .a {
@@ -30,55 +47,55 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 9px;
+  gap: 12px;
 }
 
 .logo {
   display: block;
 }
 
+/* "by Example" reads as a mono control-panel label, tracked wide */
 .header {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  line-height: 1;
+  padding-left: 12px;
+  border-left: 1px solid var(--border-color);
 }
 
 .header .a,
 .header .a:visited {
-  color: var(--color);
+  color: var(--color-faint);
+  transition: color 0.2s var(--ease);
+}
+.header .a:hover {
+  color: var(--accent-strong);
 }
 
-.mode {
-  background-color: transparent;
-  border: 0px;
-  cursor: pointer;
-  color: var(--color-muted);
-  padding: 6px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.mode:hover {
-  color: var(--color);
-  background-color: var(--link-active-color);
-}
-
+.mode,
 .navToggle {
   background-color: transparent;
-  border: 0;
+  border: 1px solid transparent;
   cursor: pointer;
-  color: var(--color-muted);
+  color: var(--color-faint);
   padding: 6px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   display: inline-flex;
   align-items: center;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    transform 0.15s var(--ease);
 }
 
+.mode:hover,
 .navToggle:hover {
-  color: var(--color);
-  background-color: var(--link-active-color);
+  color: var(--accent-strong);
+  border-color: var(--border-color);
+  transform: translateY(-1px);
 }
 
 .hamburger {

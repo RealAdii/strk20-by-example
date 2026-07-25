@@ -45,7 +45,8 @@
       // This script tag here is, purposefully blocking the 1st render
       // to avoid background flashes on page load/reload
       // It does the bare minimum: checking the previous mode in the localStorage
-      const theme = localStorage.getItem("theme") || "light"
+      // STRK20 is dark-first: default to dark unless the visitor chose light.
+      const theme = localStorage.getItem("theme") || "dark"
       document.body.classList.add(theme)
     </script>
     <div id="root"></div>
