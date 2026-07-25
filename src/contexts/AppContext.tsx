@@ -61,6 +61,12 @@ export const Provider: React.FC<Props> = ({ children }) => {
           sideNav = val == "true"
         }
       }
+      // Below 900px the rail is an overlay drawer, so it must start closed —
+      // otherwise a preference stored on a wide screen covers the whole page.
+      // This also closes it after a nav tap, since navigation is a full load.
+      if (params.width < 900) {
+        sideNav = false
+      }
 
       _setTheme(theme)
 

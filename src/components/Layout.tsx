@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const { state } = useAppContext()
+  const { state, toggleSideNav } = useAppContext()
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
@@ -46,6 +46,10 @@ const Layout: React.FC<Props> = ({ children }) => {
       >
         {state.sideNav ? <SideNav onClick={onClick} /> : null}
       </div>
+      {/* tap-outside-to-close for the mobile drawer; CSS hides it on desktop */}
+      {state.sideNav ? (
+        <div className={styles.backdrop} onClick={toggleSideNav} aria-hidden="true" />
+      ) : null}
       <div className={styles.main}>
         <Header />
         <div className={styles.children}>

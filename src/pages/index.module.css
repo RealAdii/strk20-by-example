@@ -28,13 +28,21 @@
   );
 }
 
+/* The wordmark is ~7:1, so a fixed pixel height overflows narrow screens.
+   Drive it from width instead and let the intrinsic ratio set the height
+   (!important overrides the inline height the shared component sets). */
 .heroLogo {
   margin: 0 auto;
+  width: min(100%, 440px) !important;
+  height: auto !important;
 }
 
 .header {
   margin: 0;
   position: relative;
+  /* full width, so the wordmark's max-width resolves against the column
+     rather than against its own intrinsic size */
+  width: 100%;
 }
 
 .headerLink {
@@ -43,6 +51,7 @@
   align-items: center;
   gap: 14px;
   text-decoration: none;
+  width: 100%;
 }
 
 /* gradient-filled warm off-white display headline (brand hero treatment) */

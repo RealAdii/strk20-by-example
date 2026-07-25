@@ -33,3 +33,42 @@
   min-width: var(--min-main-width);
   padding: 44px clamp(20px, 4vw, 44px) 24px;
 }
+
+/* Backdrop only exists for the mobile drawer (see media query below). */
+.backdrop {
+  display: none;
+}
+
+/* ============================================================
+   Narrow viewports — the rail becomes an overlay drawer.
+   In flow it is a fixed-width flex child, so it takes its 272px out of
+   the content column: at 390px that left the page ~93px to render in.
+   ============================================================ */
+@media (max-width: 900px) {
+  .sideNav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    max-height: none;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+  }
+  .main {
+    width: 100%;
+    /* the drawer no longer reserves space, so never squeeze the content */
+    min-width: 0;
+  }
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+  }
+  .children {
+    min-width: 0;
+    padding: 32px 20px 24px;
+  }
+}
