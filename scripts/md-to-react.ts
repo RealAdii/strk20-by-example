@@ -99,6 +99,15 @@ async function mdToHtml(filePath: string) {
   const { content, metadata } = await parseYaml(filePath)
 
   const markdown = mustache.render(content, codes)
+
+  // Same escaping the html gets: this is embedded in a template literal, and
+  // markdown is full of backticks. Backslashes first, or the later passes
+  // would double-escape their own output.
+  const markdownSource = markdown
+    .replace(/\\/g, `\\\\`)
+    .replace(/`/g, "\\`")
+    .replace(/\$\{/g, "\\${")
+
   resetSlugs()
   const html = (await marked.parse(markdown))
     .replace(/&quot;/g, `"`)
@@ -115,6 +124,7 @@ async function mdToHtml(filePath: string) {
     path.join(dir, `${fileName}.html.ts`),
     {
       html,
+      markdown: markdownSource,
       title: metadata.title,
       version: metadata.version,
       description: metadata.description,

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom"
 import SEO from "../components/SEO"
 import SearchBar from "../components/SearchBar"
 import Strk20 from "../components/svg/Strk20"
-import GradientBlinds from "../components/GradientBlinds"
+import Grainient from "../components/Grainient"
 import { useAppContext } from "../contexts/AppContext"
 import useDebounce from "../hooks/useDebounce"
 import { search, unique } from "../lib/search"
@@ -13,10 +13,12 @@ import { ROUTES, ROUTES_BY_CATEGORY } from "../nav"
 // Micro/meta copy reads like a filing (brand voice).
 const UPDATES = ["Release · 2026.07.08", "Status · Live"]
 
-// One accent, always orange — the brand's rule. These are tints of #c53400
-// rather than a second hue. Module-level so the identity is stable: the
-// shader's effect re-creates the WebGL context whenever this array changes.
-const HERO_GRADIENT = ["#7a1f00", "#c53400", "#ff6a33"]
+// One accent, always orange. Light tint -> the accent itself -> the deep warm
+// base already in the brand tokens (it's the text colour on an orange
+// selection), so the wash resolves into the near-black canvas.
+const HERO_LIGHT = "#ff6a33"
+const HERO_ACCENT = "#c53400"
+const HERO_BASE = "#1a0a04"
 
 export default function HomePage() {
   const { state } = useAppContext()
@@ -153,24 +155,27 @@ export default function HomePage() {
             to lift on the warm-paper canvas. */}
         {state.theme == "dark" && wideEnough ? (
           <div className={styles.heroShader} aria-hidden="true">
-            <GradientBlinds
-              gradientColors={HERO_GRADIENT}
-              angle={20}
-              noise={0.12}
-              blindCount={14}
-              blindMinWidth={56}
-              spotlightRadius={0.62}
-              spotlightSoftness={1.35}
-              spotlightOpacity={0.85}
-              mouseDampening={0.22}
-              distortAmount={0.6}
-              shineDirection="left"
-              mixBlendMode="lighten"
+            <Grainient
+              className={styles.heroGrainient}
+              color1={HERO_LIGHT}
+              color2={HERO_ACCENT}
+              color3={HERO_BASE}
+              timeSpeed={0.12}
+              colorBalance={0.1}
+              warpStrength={1}
+              warpFrequency={4}
+              warpSpeed={1.1}
+              warpAmplitude={62}
+              blendAngle={18}
+              blendSoftness={0.16}
+              rotationAmount={220}
+              noiseScale={1.6}
+              grainAmount={0.08}
+              grainScale={2}
+              contrast={1.2}
+              saturation={1.05}
+              zoom={1}
               paused={reducedMotion}
-              dpr={Math.min(
-                typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1,
-                1.5,
-              )}
             />
             <div className={styles.heroScrim} />
           </div>

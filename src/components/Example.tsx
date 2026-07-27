@@ -1,9 +1,12 @@
 import React, { useMemo } from "react"
+import { useLocation } from "react-router-dom"
 import SEO from "./SEO"
 import Html from "./Html"
 import Toc from "./Toc"
 import SplitContent from "./SplitContent"
+import PageActions from "./PageActions"
 import styles from "./Example.module.css"
+import { ROUTES_BY_CATEGORY, getCategoryIndexByPath } from "../nav"
 
 interface Path {
   title: string
@@ -17,6 +20,7 @@ interface Props {
   html: string
   githubLink?: string
   githubLabel?: string
+  markdown?: string
   prev: Path | null
   next: Path | null
   // "split" pairs prose with a sticky code column; "guide" is single-column
@@ -31,10 +35,13 @@ const Example: React.FC<Props> = ({
   githubLink,
   githubLabel,
   html,
+  markdown,
   prev,
   next,
   layout,
 }) => {
+  const location = useLocation()
+  const category = ROUTES_BY_CATEGORY[getCategoryIndexByPath(location.pathname)]
   // Most pages here carry only 1–2 short snippets; a sticky code rail on those
   // would just be an empty column. Only pages that are genuinely code-led split.
   const split = useMemo(() => {
@@ -53,7 +60,22 @@ const Example: React.FC<Props> = ({
       />
       <div className={split ? styles.bodyWide : styles.body}>
         <div className={styles.content} data-toc-root>
+          <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            {category ? (
+              <>
+                <span className={styles.crumbSep}>/</span>
+                <span>{category.tab}</span>
+              </>
+            ) : null}
+            <span className={styles.crumbSep}>/</span>
+            <span className={styles.crumbCurrent}>{title}</span>
+          </nav>
+
           <h1 className={styles.title}>{title}</h1>
+          {description ? <p className={styles.subtitle}>{description}</p> : null}
+
+          {markdown ? <PageActions title={title} markdown={markdown} /> : null}
 
           {githubLink ? (
             <div className={styles.sourceLink}>

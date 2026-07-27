@@ -9,6 +9,9 @@ export const keywords = ["airdrop", "anonymous airdrop"]
 
 export const codes = []
 
+// Raw markdown source, for "View as Markdown" / "Copy for LLM".
+export const markdown = ``
+
 const html = ``
 
 export default html

@@ -18,6 +18,44 @@ export const keywords = [
 
 export const codes = []
 
+// Raw markdown source, for "View as Markdown" / "Copy for LLM".
+export const markdown = `
+The **\`useStrk20\` hooks** from
+[Starknet Start](https://starknet-innovation.github.io/starknet-start/docs/hooks/use-strk20/#hooks)
+are a convenience wrapper over the [Starknet Wallet API](/starknet-wallet-api/overview).
+They are the recommended starting point for **React dapps**.
+
+## When to use this
+
+Use the hooks when you are building a **React dapp** on top of an existing
+privacy-enabled wallet and want to request STRK20 actions without wiring each
+wallet call by hand. If you are working outside React, or need finer control over
+connection and proof handling, use
+[starknet.js \`WalletAccountV6\`](/starknet-wallet-api/starknet-js) directly.
+
+## How it works
+
+The hooks call into a \`WalletAccountV6\` (or equivalent) under the hood. Your React
+components ask for a private action; the connected wallet manages the private
+state, ZK proof, and signature wallet-side.
+
+## What to keep in mind
+
+- **Wallet support is required.** The connected wallet must support the STRK20
+  wallet API methods, since the ZK proofs and signatures are managed wallet-side.
+- **React only.** The hooks are a React convenience layer; non-React apps should
+  use the [starknet.js](/starknet-wallet-api/starknet-js) route.
+- **Follow the upstream docs.** For hook names, parameters, and return values, see
+  the
+  [Starknet Start \`useStrk20\` reference](https://starknet-innovation.github.io/starknet-start/docs/hooks/use-strk20/#hooks).
+
+## Read next
+
+- [Starknet Wallet API overview](/starknet-wallet-api/overview)
+- [starknet.js](/starknet-wallet-api/starknet-js)
+- [Anonymizer Contract Anatomy](/helpers/privacy-invoke)
+`
+
 const html = `<p>The <strong><code>useStrk20</code> hooks</strong> from
 <a href="https://starknet-innovation.github.io/starknet-start/docs/hooks/use-strk20/#hooks">Starknet Start</a>
 are a convenience wrapper over the <a href="/starknet-wallet-api/overview">Starknet Wallet API</a>.

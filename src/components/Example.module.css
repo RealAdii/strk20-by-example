@@ -27,6 +27,35 @@
   margin: 15px 10px 15px 10px;
 }
 
+/* Breadcrumbs — mono, quiet, the orange slash keeping the accent present */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-faint);
+}
+.breadcrumbs a,
+.breadcrumbs a:visited {
+  color: var(--color-faint);
+  text-decoration: none;
+  transition: color 0.15s var(--ease);
+}
+.breadcrumbs a:hover {
+  color: var(--accent-strong);
+}
+.crumbSep {
+  color: var(--accent);
+}
+.crumbCurrent {
+  color: var(--color-muted);
+}
+
 /* Page title — display, uppercase, tight, with an orange top rule above it */
 .title {
   font-family: var(--font-display);
@@ -39,6 +68,17 @@
   margin: 0 0 12px 0;
   padding-top: 18px;
   border-top: 2px solid var(--accent);
+}
+
+/* Standfirst under the title — the frontmatter description, which until now
+   only ever reached the SEO tags. */
+.subtitle {
+  max-width: 58ch;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-wrap: pretty;
 }
 
 /* Keep prose at a readable measure; code blocks and tables stay wide. */
