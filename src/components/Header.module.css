@@ -2,16 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  background-color: color-mix(in srgb, var(--bg-color) 88%, transparent);
+  background-color: color-mix(in srgb, var(--bg-color) 92%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   min-width: var(--min-main-width);
-  white-space: nowrap;
 }
 
 /* single hairline orange rule pinned to the top edge — brand top-accent */
@@ -30,63 +24,74 @@
   opacity: 0.55;
 }
 
+/* ---------- row 1: wordmark · search + Ask AI · theme ---------- */
+.bar {
+  display: grid;
+  /* minmax(0,...) so the side columns can shrink instead of running under
+     the centred search field */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+.center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .a {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
-
-.center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.centerInner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-}
-
 .logo {
   display: block;
 }
 
-/* "by Example" reads as a mono control-panel label, tracked wide */
-.header {
+.wordmark {
+  flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   line-height: 1;
-  padding-left: 12px;
+  padding-left: 10px;
   border-left: 1px solid var(--border-color);
 }
-
-.header .a,
-.header .a:visited {
+.wordmark .a,
+.wordmark .a:visited {
   color: var(--color-faint);
   transition: color 0.2s var(--ease);
 }
-.header .a:hover {
+.wordmark .a:hover {
   color: var(--accent-strong);
 }
 
-.right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Stripe-style search affordance: shows the shortcut rather than hiding it */
+/* the wide search field, with the shortcut shown rather than hidden */
 .search {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 8px 6px 10px;
+  gap: 10px;
+  width: clamp(200px, 26vw, 380px);
+  padding: 8px 8px 8px 12px;
   background: var(--input-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--r-sm);
@@ -94,30 +99,36 @@
   cursor: pointer;
   transition:
     border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
     color 0.2s var(--ease);
 }
 .search:hover {
   border-color: var(--accent);
   color: var(--color);
+  box-shadow: 0 0 20px rgba(197, 52, 0, 0.18);
 }
 .searchIcon {
   flex-shrink: 0;
 }
 .searchLabel {
+  flex: 1;
+  text-align: left;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
 }
 .searchKbd {
-  min-width: 16px;
-  padding: 0 4px;
+  flex-shrink: 0;
+  min-width: 18px;
+  padding: 1px 5px;
   border: 1px solid var(--border-color);
   border-radius: var(--r-sm);
   background: var(--bg-color);
   font-family: var(--font-mono);
   font-size: 10px;
   line-height: 15px;
+  color: var(--color-faint);
 }
 
 .mode,
@@ -135,38 +146,155 @@
     border-color 0.2s var(--ease),
     transform 0.15s var(--ease);
 }
-
 .mode:hover,
 .navToggle:hover {
   color: var(--accent-strong);
   border-color: var(--border-color);
   transform: translateY(-1px);
 }
-
 .hamburger {
   display: block;
 }
 
-/* On the narrowest screens the wide-tracked label pushes the wordmark
-   off-centre — keep the wordmark, drop the label. */
-@media (max-width: 560px) {
-  /* keep the icon as the tap target, drop the label and shortcut hint */
-  .searchLabel,
+/* ---------- row 2: product tabs ---------- */
+.tabs {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 20px;
+  border-top: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabList {
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.tab,
+.tabActive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.15s var(--ease);
+}
+.tab,
+.tab:visited {
+  color: var(--color-muted);
+}
+.tab:hover {
+  color: var(--color);
+}
+
+/* active tab carries the accent underline */
+.tabActive,
+.tabActive:visited {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+.tabActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.tabsRight {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.tabLink,
+.tabLink:visited {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-faint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s var(--ease);
+}
+.tabLink::after {
+  content: " ↗";
+  color: var(--accent);
+}
+.tabLink:hover {
+  color: var(--color);
+}
+
+/* ---------- responsive ---------- */
+/* The rail eats ~284px, so the bar has far less room than the viewport
+   suggests — this breakpoint is set against the bar's real width, not the
+   window's. The STRK[20] lockup carries the identity; the label goes first. */
+@media (max-width: 1400px) {
+  .wordmark {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  /* outbound links go next — the section tabs matter more */
+  .tabsRight {
+    display: none;
+  }
+}
+
+/* Below this a centred column can't hold the search field without squeezing
+   the lockup, so the bar stops centring and the field takes the slack. */
+@media (max-width: 1100px) {
+  .bar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+  .center {
+    justify-self: stretch;
+  }
+  .search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  /* no physical keyboard to press "/" on */
   .searchKbd {
     display: none;
   }
+}
+
+@media (max-width: 560px) {
+  .logo {
+    height: 15px !important;
+  }
+  .searchLabel {
+    display: none;
+  }
   .search {
-    padding: 6px;
+    justify-content: center;
+    padding: 8px;
   }
 }
 
 @media (max-width: 430px) {
-  .header {
-    display: none;
+  .bar {
+    padding: 10px 14px;
   }
-  /* the 300px floor plus gutters overflows a 320px screen */
-  .component {
-    min-width: 0;
-    padding: 12px 14px;
+  .tabs {
+    padding: 0 14px;
   }
 }

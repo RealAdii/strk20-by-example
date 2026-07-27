@@ -10,6 +10,9 @@ export interface RouteGroup {
 
 export interface RouteCategory {
   title: string
+  // Short label for the top product tab bar; `title` can run to two lines,
+  // which a tab cannot.
+  tab: string
   routes?: Route[]
   groups?: RouteGroup[]
 }
@@ -146,10 +149,12 @@ function prefixRoutes(prefix: string, routes: Route[]): Route[] {
 export const ROUTES_BY_CATEGORY: RouteCategory[] = [
   {
     title: "",
+    tab: "Concepts",
     routes: prefixRoutes("", CONCEPT_ROUTES),
   },
   {
     title: "Get Started :\nBuild Private Applications",
+    tab: "Get started",
     routes: [
       {
         path: "/overview",
@@ -169,13 +174,31 @@ export const ROUTES_BY_CATEGORY: RouteCategory[] = [
   },
   {
     title: "Build Privacy Wallets",
+    tab: "Build privacy wallets",
     routes: prefixRoutes("/sdk", BUILD_PRIVACY_WALLET_ROUTES),
   },
   {
     title: "Applications",
+    tab: "Applications",
     routes: prefixRoutes("/app", APP_ROUTES),
   },
 ]
+
+export function categoryRoutes(category: RouteCategory): Route[] {
+  const { routes = [], groups = [] } = category
+  return [...routes, ...groups.map((g) => g.routes).flat()]
+}
+
+// Which product tab owns the current URL. -1 on the home page, which sits
+// above the tabs rather than inside one.
+export function getCategoryIndexByPath(pathname: string): number {
+  for (let i = 0; i < ROUTES_BY_CATEGORY.length; i++) {
+    if (categoryRoutes(ROUTES_BY_CATEGORY[i]).some((r) => r.path == pathname)) {
+      return i
+    }
+  }
+  return -1
+}
 
 export const ROUTES = ROUTES_BY_CATEGORY.map(({ routes = [], groups = [] }) => [
   ...routes,

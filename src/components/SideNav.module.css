@@ -17,59 +17,27 @@
   margin-bottom: 10px;
 }
 
-/* Section kicker — mono, uppercase, orange ◢ tick (brand eyebrow). */
-.category {
+/* Rail heading — names the section the product tab selected. */
+.railTitle {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  width: 100%;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  text-align: left;
+  padding: 4px 10px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border-subtle);
   color: var(--color-faint);
-  padding: 9px 10px;
-  margin: 0 0 2px 0;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  /* 0.28em sprawled the longer kickers over three lines */
   letter-spacing: 0.16em;
   line-height: 1.5;
-  border-radius: var(--r-sharp);
-  transition: color 0.15s var(--ease);
-}
-.category:hover {
-  color: var(--color);
 }
 .tick {
   color: var(--accent);
   letter-spacing: 0;
   line-height: 1.5;
   flex-shrink: 0;
-}
-.categoryLabel {
-  flex: 1;
-  min-width: 0;
-}
-
-.chevron,
-.chevronOpen {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.2;
-  letter-spacing: 0;
-  color: var(--color-ghost, var(--color-faint));
-  opacity: 0.6;
-  transition: transform 0.2s var(--ease);
-}
-.chevron {
-  transform: rotate(0deg);
-}
-.chevronOpen {
-  transform: rotate(90deg);
 }
 
 /* Group parent — the "Use Payment Links" row: sentence case, medium weight,
