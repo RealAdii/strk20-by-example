@@ -6,7 +6,6 @@ import html, {
   description,
   githubLink,
   githubLabel,
-  codes,
 } from "./index.html"
 
 interface Path {
@@ -30,7 +29,6 @@ const ExamplePage: React.FC<Props> = ({ prev, next }) => {
       html={html}
       prev={prev}
       next={next}
-      codes={codes}
     />
   )
 }

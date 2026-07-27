@@ -53,7 +53,7 @@ separate transaction first (see <a href="/sdk/deposit">Deposit</a>).</p>
   : {}
 <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> account.<span class="hljs-title function_">execute</span>(callAndProof.<span class="hljs-property">call</span>, { <span class="hljs-attr">tip</span>: <span class="hljs-number">0n</span>, ...proofDetails })
 <span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">waitForTransaction</span>(tx.<span class="hljs-property">transaction_hash</span>)
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>The deposit has <strong>no <code>recipient</code></strong>. Its 100n enters the token&#39;s balance
 sheet for this transaction; the transfer takes 60n; <code>surplusTo</code> claims the

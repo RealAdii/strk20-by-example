@@ -45,7 +45,7 @@ builder must be told who owns it.</p>
   : {}
 <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> account.<span class="hljs-title function_">execute</span>(callAndProof.<span class="hljs-property">call</span>, { <span class="hljs-attr">tip</span>: <span class="hljs-number">0n</span>, ...proofDetails })
 <span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">waitForTransaction</span>(tx.<span class="hljs-property">transaction_hash</span>)
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><code>.inputs(note)</code> selects exactly which notes to spend. Without it, set
 <code>autoSelectNotes</code> in <code>build()</code> and let the SDK choose.</li>
@@ -59,7 +59,7 @@ reuse change must wait out the maturity window.</li>
 <a href="/sdk/setup-requirements">Channels &amp; Setup Requirements</a>. <code>autoSetup: true</code>
 opens the channel and token subchannel if missing.</li>
 </ul>
-<h2>Automatic note selection</h2>
+<h2 id="automatic-note-selection">Automatic note selection<a class="anchor" href="#automatic-note-selection" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>

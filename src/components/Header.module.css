@@ -75,6 +75,51 @@
   color: var(--accent-strong);
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Stripe-style search affordance: shows the shortcut rather than hiding it */
+.search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-sm);
+  color: var(--color-faint);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+.search:hover {
+  border-color: var(--accent);
+  color: var(--color);
+}
+.searchIcon {
+  flex-shrink: 0;
+}
+.searchLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.searchKbd {
+  min-width: 16px;
+  padding: 0 4px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-sm);
+  background: var(--bg-color);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 15px;
+}
+
 .mode,
 .navToggle {
   background-color: transparent;
@@ -104,6 +149,17 @@
 
 /* On the narrowest screens the wide-tracked label pushes the wordmark
    off-centre — keep the wordmark, drop the label. */
+@media (max-width: 560px) {
+  /* keep the icon as the tap target, drop the label and shortcut hint */
+  .searchLabel,
+  .searchKbd {
+    display: none;
+  }
+  .search {
+    padding: 6px;
+  }
+}
+
 @media (max-width: 430px) {
   .header {
     display: none;

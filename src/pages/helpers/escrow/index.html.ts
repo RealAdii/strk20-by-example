@@ -188,7 +188,7 @@ pub mod Escrow {
     }
 }
 </span>
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>Access control</strong> - <code>privacy_invoke</code> asserts the caller is the privacy pool.
 Nobody can drive the escrow directly.</li>

@@ -1,0 +1,71 @@
+.component {
+  position: sticky;
+  /* clears the sticky header (~56px) rather than hiding beneath it */
+  top: 80px;
+  align-self: start;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding-left: 20px;
+  border-left: 1px solid var(--border-color);
+}
+
+.heading {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-faint);
+  margin-bottom: 12px;
+}
+.tick {
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  margin: 0;
+}
+.nested {
+  padding-left: 12px;
+}
+
+.link,
+.linkActive {
+  display: block;
+  padding: 5px 0 5px 12px;
+  margin-left: -21px;
+  border-left: 2px solid transparent;
+  font-size: 12.5px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 0.15s var(--ease),
+    border-color 0.15s var(--ease);
+}
+
+.link,
+.link:visited {
+  color: var(--color-faint);
+}
+.link:hover {
+  color: var(--color);
+}
+
+.linkActive,
+.linkActive:visited {
+  color: var(--accent-strong);
+  border-left-color: var(--accent);
+}
+
+/* The rail only earns its space on wide screens. */
+@media (max-width: 1280px) {
+  .component {
+    display: none;
+  }
+}

@@ -25,7 +25,7 @@ plus knowledge of its private viewing key</li>
 <li><strong>Token</strong> - the ERC-20 contract address</li>
 <li><strong>Amount</strong> - a 128-bit value, stored encrypted on-chain</li>
 </ul>
-<h2>Spending is all-or-nothing (UTXO)</h2>
+<h2 id="spending-is-all-or-nothing-utxo">Spending is all-or-nothing (UTXO)<a class="anchor" href="#spending-is-all-or-nothing-utxo" aria-label="Link to this section">#</a></h2>
 <p>Notes cannot be partially spent. To pay 30 out of a 100-token note, you consume
 the whole note and create two new ones:</p>
 <pre><code>        ┌────────────────┐        spend        ┌──────────────────────┐
@@ -34,7 +34,7 @@ Alice ──│ note: 100 USDC │───────────────�
                                                └──────────────────────┘
 </code></pre><p>This is exactly Bitcoin&#39;s UTXO model, but every input and output is encrypted.
 A zero-knowledge proof guarantees the amounts balance without revealing them.</p>
-<h2>Open notes</h2>
+<h2 id="open-notes">Open notes<a class="anchor" href="#open-notes" aria-label="Link to this section">#</a></h2>
 <p>An <strong>open note</strong> deliberately skips amount encryption. It uses a
 protocol-reserved salt, so the stored payload is plaintext, and its amount can
 be filled in <em>after</em> proof generation:</p>
@@ -46,7 +46,7 @@ be filled in <em>after</em> proof generation:</p>
 <p>Open notes exist for DeFi: a swap&#39;s output amount is only known at execution
 time, long after the client proved its transaction. An anonymizer contract fills the
 open note with the actual output, which then becomes spendable private balance.</p>
-<h2>Where a note lives</h2>
+<h2 id="where-a-note-lives">Where a note lives<a class="anchor" href="#where-a-note-lives" aria-label="Link to this section">#</a></h2>
 <p>Notes are not stored in one global list. Each note&#39;s storage location is
 derived from the <strong>channel key</strong> (a secret shared by sender and recipient), the
 token, and a sequential index inside the channel&#39;s per-token subchannel:</p>
@@ -59,7 +59,7 @@ token, and a sequential index inside the channel&#39;s per-token subchannel:</p>
 </code></pre><p>Indices are dense and sequential (0, 1, 2, …), and every note cell is
 <strong>WriteOnce</strong> - written once, never mutated. Without the channel key, note
 locations are indistinguishable from random storage slots.</p>
-<h2>Nullifiers</h2>
+<h2 id="nullifiers">Nullifiers<a class="anchor" href="#nullifiers" aria-label="Link to this section">#</a></h2>
 <p>Spending a note does not delete it. Instead the spender publishes a
 <strong>nullifier</strong> - a one-way Poseidon hash bound to the note and to the owner&#39;s
 private viewing key:</p>

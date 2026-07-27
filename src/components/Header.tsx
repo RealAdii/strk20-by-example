@@ -5,8 +5,13 @@ import styles from "./Header.module.css"
 import DarkMode from "./svg/DarkMode"
 import LightMode from "./svg/LightMode"
 import Strk20 from "./svg/Strk20"
+import Search from "./svg/Search"
 
-function Header() {
+interface Props {
+  onOpenSearch: () => void
+}
+
+const Header: React.FC<Props> = ({ onOpenSearch }) => {
   const { state, setTheme, toggleSideNav } = useAppContext()
 
   function onClickTheme() {
@@ -35,16 +40,28 @@ function Header() {
           </span>
         </div>
       </div>
-      <button
-        className={styles.mode}
-        onClick={onClickTheme}
-        title={state.theme == "dark" ? "Switch to light mode" : "Switch to dark mode"}
-        aria-label={
-          state.theme == "dark" ? "Switch to light mode" : "Switch to dark mode"
-        }
-      >
-        {state.theme == "dark" ? <LightMode size={20} /> : <DarkMode size={18} />}
-      </button>
+      <div className={styles.right}>
+        <button
+          className={styles.search}
+          onClick={onOpenSearch}
+          title="Search the docs"
+          aria-label="Search the docs"
+        >
+          <Search size={14} className={styles.searchIcon} />
+          <span className={styles.searchLabel}>Search</span>
+          <kbd className={styles.searchKbd}>/</kbd>
+        </button>
+        <button
+          className={styles.mode}
+          onClick={onClickTheme}
+          title={state.theme == "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          aria-label={
+            state.theme == "dark" ? "Switch to light mode" : "Switch to dark mode"
+          }
+        >
+          {state.theme == "dark" ? <LightMode size={20} /> : <DarkMode size={18} />}
+        </button>
+      </div>
     </div>
   )
 }

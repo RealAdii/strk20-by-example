@@ -165,7 +165,7 @@ pub mod VesuLendingHelper {
     }
 }
 </span>
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>Same skeleton as the swap helper</strong> - validate inputs, snapshot the output
 balance, do the external call, credit the delta. Only the middle differs.</li>

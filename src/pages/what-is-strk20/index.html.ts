@@ -21,7 +21,7 @@ const html = `<p>The foundation for all privacy on Starknet: the layer everythin
 and writes to. STRK20 brings shielded balances, private transfers, and private
 DeFi to any ERC-20 on Starknet, built on the wallets and liquidity that already
 exist rather than a separate ecosystem.</p>
-<h3>How it works at a high level</h3>
+<h3 id="how-it-works-at-a-high-level">How it works at a high level<a class="anchor" href="#how-it-works-at-a-high-level" aria-label="Link to this section">#</a></h3>
 <ul>
 <li><strong>Note-based pool: not a mixer.</strong> Shielding deposits an ERC-20 into the pool,
 where the balance is held as an encrypted note (a UTXO). Private transfers
@@ -43,7 +43,7 @@ from the transaction.</li>
 transparency is required, moving value between public and confidential states on
 the same underlying token.</li>
 </ul>
-<h2>The lifecycle: public → private → public</h2>
+<h2 id="the-lifecycle-public-private-public">The lifecycle: public → private → public<a class="anchor" href="#the-lifecycle-public-private-public" aria-label="Link to this section">#</a></h2>
 <ol>
 <li><strong>Deposit</strong> - move public ERC-20 tokens into the pool. The deposit itself is
 visible on-chain (depositor and amount), but the resulting note is encrypted.</li>
@@ -60,7 +60,7 @@ account-based flows such as borrowing and staking will run through real
 Starknet accounts that carry no public onchain link back to the user&#39;s main
 wallet, and using fresh sub-accounts per app fragments the trail further. The
 same caveat applies - app-side activity and amounts can still be public.</p>
-<h2>What makes it different</h2>
+<h2 id="what-makes-it-different">What makes it different<a class="anchor" href="#what-makes-it-different" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>Native to Starknet</strong> - no separate chain or bridge. It runs as a contract on
 Starknet and composes with existing accounts and DeFi.</li>
@@ -73,7 +73,7 @@ viewing key to an auditor&#39;s public key, so the system can disclose the
 information needed to respond to a legitimate regulatory request without
 exposing unrelated users.</li>
 </ul>
-<h2>The building blocks</h2>
+<h2 id="the-building-blocks">The building blocks<a class="anchor" href="#the-building-blocks" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -108,7 +108,7 @@ exposing unrelated users.</li>
 </tbody></table>
 <p>Each of these has its own page in the Concepts section - read them in order and
 you will have the full mental model.</p>
-<h2>Who this site is for</h2>
+<h2 id="who-this-site-is-for">Who this site is for<a class="anchor" href="#who-this-site-is-for" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>Private dapp developers</strong> integrating with existing wallets - see the
 Starknet Wallet API section.</li>

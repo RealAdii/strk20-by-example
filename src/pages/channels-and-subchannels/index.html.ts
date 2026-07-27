@@ -20,7 +20,7 @@ export const codes = []
 const html = `<p>There is no "inbox" for private payments. Encrypted notes sit silently in the
 pool&#39;s storage until the recipient looks for them. <strong>Channels</strong> make that
 lookup cheap and deterministic.</p>
-<h2>Channels are directional lanes</h2>
+<h2 id="channels-are-directional-lanes">Channels are directional lanes<a class="anchor" href="#channels-are-directional-lanes" aria-label="Link to this section">#</a></h2>
 <p>A channel is a <strong>sender → recipient</strong> lane. Its key is derived from the
 sender&#39;s private viewing key and the recipient&#39;s public viewing key:</p>
 <pre><code>channel_key = h(CHANNEL_KEY_TAG, sender_addr, sender_private_key,
@@ -30,7 +30,7 @@ ECDH decryption of the channel record - but nobody else can. If Alice and Bob
 pay each other, that is <strong>two</strong> channels, one per direction. Directionality
 keeps sender authorization simple and recipient discovery deterministic.</p>
 <p>A deposit is just a channel from yourself to yourself.</p>
-<h2>Subchannels: one per token</h2>
+<h2 id="subchannels-one-per-token">Subchannels: one per token<a class="anchor" href="#subchannels-one-per-token" aria-label="Link to this section">#</a></h2>
 <p>Inside a channel, notes are grouped by token. The first transfer of a given
 token through a channel opens that token&#39;s <strong>subchannel</strong>, which holds the
 encrypted token address and its own note index counter.</p>
@@ -40,12 +40,12 @@ encrypted token address and its own note index counter.</p>
 
 Alice ──► Alice (self-channel, used for deposits and change)
    └── subchannel[0]: USDC   ── note 0, note 1, ...
-</code></pre><h2>Dense sequential indices</h2>
+</code></pre><h2 id="dense-sequential-indices">Dense sequential indices<a class="anchor" href="#dense-sequential-indices" aria-label="Link to this section">#</a></h2>
 <p>Outgoing channels, subchannels and notes are all stored as <strong>dense sequential
 lists</strong> - indices 0, 1, 2, … with no gaps, in WriteOnce storage. Density is
 what makes scanning terminate: a reader walks each list until the first empty
 slot and knows nothing is hidden beyond it.</p>
-<h2>The discovery scan</h2>
+<h2 id="the-discovery-scan">The discovery scan<a class="anchor" href="#the-discovery-scan" aria-label="Link to this section">#</a></h2>
 <p>To find your incoming funds, given only your private viewing key:</p>
 <ol>
 <li><strong>Channels</strong> - scan channel entries addressed to you, attempting to decrypt
@@ -60,7 +60,7 @@ against the on-chain nullifier set to skip spent ones.</li>
 <p>What is left is your spendable private balance. A discovery service can run
 this scan on your behalf; see the SDK docs for how viewing-key material is
 handled in that flow.</p>
-<h2>Why this scales</h2>
+<h2 id="why-this-scales">Why this scales<a class="anchor" href="#why-this-scales" aria-label="Link to this section">#</a></h2>
 <p>The scan touches only channels addressed to <em>you</em> and the notes inside them.
 Cost is proportional to <strong>your own activity</strong> - how many counterparties pay you
 and how many notes they send - not to total pool volume. A pool with millions

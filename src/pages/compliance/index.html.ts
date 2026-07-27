@@ -20,7 +20,7 @@ const html = `<p>STRK20 is private from the public, not from lawful oversight. C
 on two mechanisms: every deposit is screened before it enters the pool, and
 selective disclosure is available after the fact through a single ciphertext
 created at registration.</p>
-<h2>Onchain deposit screening</h2>
+<h2 id="onchain-deposit-screening">Onchain deposit screening<a class="anchor" href="#onchain-deposit-screening" aria-label="Link to this section">#</a></h2>
 <p>Every deposit into the pool is screened. FPI (the screening provider) screens
 the address that shields tokens and signs every deposit; the pool verifies
 FPI&#39;s signature onchain before accepting the deposit. Since the v0.14.3
@@ -29,7 +29,7 @@ route into the pool - wallet flows, SDK integrations, and self-hosted provers
 alike. Running your own prover is not a way around screening: any other pool
 action can be proven with any prover, but a deposit without a valid screening
 signature is rejected onchain.</p>
-<h2>The escrowed viewing key</h2>
+<h2 id="the-escrowed-viewing-key">The escrowed viewing key<a class="anchor" href="#the-escrowed-viewing-key" aria-label="Link to this section">#</a></h2>
 <p>When a user registers (<code>SetViewingKey</code>), their <strong>private viewing key is
 encrypted to the auditor&#39;s public key</strong> - using the same ephemeral ECDH scheme
 as channels - and stored on-chain. The auditor&#39;s public key is set by
@@ -38,7 +38,7 @@ not rest with a single party.</p>
 <p>Disclosure is <strong>selective</strong>: the auditor decrypts only the viewing keys of
 users subject to a lawful request. Everyone else&#39;s transaction graph stays
 encrypted - there is no bulk-surveillance mode.</p>
-<h2>What a recovered viewing key reveals</h2>
+<h2 id="what-a-recovered-viewing-key-reveals">What a recovered viewing key reveals<a class="anchor" href="#what-a-recovered-viewing-key-reveals" aria-label="Link to this section">#</a></h2>
 <p>With one user&#39;s private viewing key, an auditor can:</p>
 <ul>
 <li>open all their <strong>incoming channels</strong> - who paid them, how much, which token</li>
@@ -47,7 +47,7 @@ encrypted - there is no bulk-surveillance mode.</p>
 <li>follow funds <strong>forward</strong> (deposit → notes → further transfers → withdrawals)
 and <strong>backward</strong> (withdrawal → notes → originating deposits)</li>
 </ul>
-<h2>What stays visible on-chain for everyone</h2>
+<h2 id="what-stays-visible-on-chain-for-everyone">What stays visible on-chain for everyone<a class="anchor" href="#what-stays-visible-on-chain-for-everyone" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -76,12 +76,12 @@ and <strong>backward</strong> (withdrawal → notes → originating deposits)</l
 <td>Token and filled amount in plaintext</td>
 </tr>
 </tbody></table>
-<h2>Auditors cannot spend</h2>
+<h2 id="auditors-cannot-spend">Auditors cannot spend<a class="anchor" href="#auditors-cannot-spend" aria-label="Link to this section">#</a></h2>
 <p>A viewing key is exactly that - a <em>viewing</em> key. Spending requires a valid
 account signature verified inside the proof, and the auditor has no
 transaction authority. Compromise of the auditor key would break
 confidentiality, never custody.</p>
-<h2>Known privacy limitations</h2>
+<h2 id="known-privacy-limitations">Known privacy limitations<a class="anchor" href="#known-privacy-limitations" aria-label="Link to this section">#</a></h2>
 <p>Honest accounting of what the protocol does not hide:</p>
 <ul>
 <li><strong>Channel-open linkability</strong> - opening a channel and depositing or

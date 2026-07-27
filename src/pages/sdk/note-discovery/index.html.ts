@@ -30,7 +30,7 @@ show the user&#39;s private balance and to feed <code>.inputs(...)</code>.</p>
 <span class="hljs-comment">// notes: AddressMap&lt;Note[]&gt; keyed by BIGINT token address</span>
 <span class="hljs-keyword">const</span> tokenNotes = notes.<span class="hljs-title function_">get</span>(<span class="hljs-title class_">BigInt</span>(tokenAddress)) ?? []
 <span class="hljs-keyword">const</span> balance = tokenNotes.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">sum, note</span>) =&gt;</span> sum + note.<span class="hljs-property">amount</span>, <span class="hljs-number">0n</span>)
-</code></pre><h2><code>AddressMap</code></h2>
+</code></pre><h2 id="addressmap"><code>AddressMap</code><a class="anchor" href="#addressmap" aria-label="Link to this section">#</a></h2>
 <p>The result map normalizes address keys - but as <strong>bigints</strong>, not strings:</p>
 <pre><code class="language-typescript">notes.<span class="hljs-title function_">get</span>(tokenAddress) <span class="hljs-comment">// undefined - string key never matches</span>
 notes.<span class="hljs-title function_">get</span>(tokenAddress.<span class="hljs-title function_">toLowerCase</span>()) <span class="hljs-comment">// still undefined</span>
@@ -40,7 +40,7 @@ notes.<span class="hljs-title function_">get</span>(<span class="hljs-title clas
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> tokenNotes <span class="hljs-keyword">of</span> notes.<span class="hljs-title function_">values</span>()) {
   <span class="hljs-comment">// ...</span>
 }
-</code></pre><h2>Incremental scans with a cursor</h2>
+</code></pre><h2 id="incremental-scans-with-a-cursor">Incremental scans with a cursor<a class="anchor" href="#incremental-scans-with-a-cursor" aria-label="Link to this section">#</a></h2>
 <p>Discovery without a cursor scans from the beginning. Persist the cursor from
 the underlying provider (or better: reuse the <code>registry</code>) so repeat scans
 only cover new blocks:</p>
@@ -53,7 +53,7 @@ only cover new blocks:</p>
 Pass it back into the next <code>build({ registry })</code> and combine with
 <code>autoDiscover: { notes: "missing" }</code> to fetch only what the registry lacks -
 <code>"refresh"</code> re-scans, <code>"all"</code> rebuilds from scratch.</p>
-<h2>Discovering channels</h2>
+<h2 id="discovering-channels">Discovering channels<a class="anchor" href="#discovering-channels" aria-label="Link to this section">#</a></h2>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> { channels, total } = <span class="hljs-keyword">await</span> transfers.<span class="hljs-title function_">discoverChannels</span>(<span class="hljs-string">"all"</span>, {
   <span class="hljs-attr">cursor</span>: previousChannelCursor,
 })
@@ -61,7 +61,7 @@ Pass it back into the next <code>build({ registry })</code> and combine with
 </code></pre><p>Pass <code>"all"</code> or a list of recipient addresses to filter. Channels hold the
 shared key and per-token nonces; you mostly treat them as opaque values that
 the registry manages for you.</p>
-<h2>Things to notice</h2>
+<h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>A note becomes visible to discovery once its transaction is accepted, but
 it is only <strong>spendable 10 blocks after creation</strong>. Check <code>note.created</code>

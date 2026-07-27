@@ -38,7 +38,7 @@ open notes to credit with which tokens and amounts.</li>
 </ol>
 <p>The output lands in an <strong>open note</strong>: its amount is public (it was measured
 on-chain, so it could not be fixed at proof time), but its owner is still hidden.</p>
-<h2>The contract every helper must satisfy</h2>
+<h2 id="the-contract-every-helper-must-satisfy">The contract every helper must satisfy<a class="anchor" href="#the-contract-every-helper-must-satisfy" aria-label="Link to this section">#</a></h2>
 <p>The pool deserializes your calldata into <code>privacy_invoke</code>&#39;s parameters - you are
 free to design the signature after the first <code>operation</code>-style arguments - and it
 deserializes your return value as <code>Span&lt;OpenNoteDeposit&gt;</code>:</p>
@@ -89,7 +89,7 @@ it is given back to the pool:</p>
 }
 </code></pre><p>Useless in production, but it shows the full contract surface: one entry point,
 calldata in, <code>Span&lt;OpenNoteDeposit&gt;</code> out.</p>
-<h2>Rules of the pattern</h2>
+<h2 id="rules-of-the-pattern">Rules of the pattern<a class="anchor" href="#rules-of-the-pattern" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>Return exactly a <code>Span&lt;OpenNoteDeposit&gt;</code></strong> - returning anything else (or
 trailing garbage) makes the pool reject the call.</li>

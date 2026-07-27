@@ -33,6 +33,42 @@ marked.use(
   }),
 )
 
+// Slugged heading ids + anchor links. marked 14 dropped default header ids,
+// so headings rendered as bare <h2> with nothing for the right-rail TOC or a
+// shared deep link to target. Reset per page via resetSlugs().
+const slugCount = new Map<string, number>()
+
+function resetSlugs() {
+  slugCount.clear()
+}
+
+function slugify(text: string): string {
+  return (
+    text
+      .toLowerCase()
+      // strip any inline html the heading picked up (e.g. <code>)
+      .replace(/<[^>]*>/g, "")
+      .replace(/&[a-z]+;/g, "")
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-") || "section"
+  )
+}
+
+marked.use({
+  renderer: {
+    heading({ tokens, depth }) {
+      const inner = this.parser.parseInline(tokens)
+      const base = slugify(inner)
+      const seen = slugCount.get(base) ?? 0
+      slugCount.set(base, seen + 1)
+      const id = seen === 0 ? base : `${base}-${seen}`
+
+      return `<h${depth} id="${id}">${inner}<a class="anchor" href="#${id}" aria-label="Link to this section">#</a></h${depth}>\n`
+    },
+  },
+})
+
 async function findCodeFiles(dir: string): Promise<string[]> {
   const files = await readdir(dir)
   return files.filter((file) => file.split(".").pop() == "cairo")
@@ -63,6 +99,7 @@ async function mdToHtml(filePath: string) {
   const { content, metadata } = await parseYaml(filePath)
 
   const markdown = mustache.render(content, codes)
+  resetSlugs()
   const html = (await marked.parse(markdown))
     .replace(/&quot;/g, `"`)
     // replace \ with \\

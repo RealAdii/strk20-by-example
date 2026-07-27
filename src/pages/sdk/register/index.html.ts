@@ -32,7 +32,7 @@ This happens once per account per pool deployment.</p>
   : {}
 <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> account.<span class="hljs-title function_">execute</span>(callAndProof.<span class="hljs-property">call</span>, { <span class="hljs-attr">tip</span>: <span class="hljs-number">0n</span>, ...proofDetails })
 <span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">waitForTransaction</span>(tx.<span class="hljs-property">transaction_hash</span>)
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>You never pass the viewing key to <code>register()</code>. The builder pulls it from
 the <code>viewingKeyProvider</code> you wired into <code>createPrivateTransfers</code>.</li>
@@ -42,7 +42,7 @@ fine but silently derives wrong channel keys - notes sent to you will never
 decrypt.</li>
 <li>Registering twice reverts. Check first, or use <code>autoRegister</code> below.</li>
 </ul>
-<h2><code>autoRegister</code></h2>
+<h2 id="autoregister"><code>autoRegister</code><a class="anchor" href="#autoregister" aria-label="Link to this section">#</a></h2>
 <p>Instead of registering as its own transaction, any build can bundle the
 registration in automatically when the account has no viewing key on-chain
 yet:</p>

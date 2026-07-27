@@ -23,7 +23,7 @@ of operations on a token, and any number of tokens via repeated <code>.with(...)
 blocks. Everything settles atomically.</p>
 <p>Snippets assume <code>transfers</code>, <code>account</code> and <code>provider</code> from
 <a href="/sdk/getting-started">Getting Started</a>.</p>
-<h2>Several operations, one token</h2>
+<h2 id="several-operations-one-token">Several operations, one token<a class="anchor" href="#several-operations-one-token" aria-label="Link to this section">#</a></h2>
 <p>Spend a 100n note: 40n to Alice, 30n withdrawn to public, 30n change.</p>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> provingBlockId = (<span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">getBlockNumber</span>()) - <span class="hljs-number">10</span>
 
@@ -43,7 +43,7 @@ blocks. Everything settles atomically.</p>
   : {}
 <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> account.<span class="hljs-title function_">execute</span>(callAndProof.<span class="hljs-property">call</span>, { <span class="hljs-attr">tip</span>: <span class="hljs-number">0n</span>, ...proofDetails })
 <span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">waitForTransaction</span>(tx.<span class="hljs-property">transaction_hash</span>)
-</code></pre><h2>Several tokens, one transaction</h2>
+</code></pre><h2 id="several-tokens-one-transaction">Several tokens, one transaction<a class="anchor" href="#several-tokens-one-transaction" aria-label="Link to this section">#</a></h2>
 <p>Each token gets its own <code>.with(...)</code> block with its own inputs and outputs.
 The per-token balance sheets are independent; <code>surplusTo</code> at the top level
 covers all of them.</p>
@@ -55,7 +55,7 @@ covers all of them.</p>
     t.<span class="hljs-title function_">inputs</span>(ethNote).<span class="hljs-title function_">withdraw</span>({ <span class="hljs-attr">amount</span>: <span class="hljs-number">10n</span>, <span class="hljs-attr">recipient</span>: account.<span class="hljs-property">address</span> }),
   )
   .<span class="hljs-title function_">execute</span>({ provingBlockId })
-</code></pre><h2>Things to notice</h2>
+</code></pre><h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>Balance-sheet rule holds <strong>per token</strong>: inputs + deposits must cover
 transfers + withdrawals; <code>surplusTo</code> takes each token&#39;s remainder. A

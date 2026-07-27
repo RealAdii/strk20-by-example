@@ -24,7 +24,7 @@ export const codes = []
 const html = `<p>STRK20 is a privacy pool plus a small set of integration surfaces. Start with
 the narrowest surface that keeps user keys in the right place and only move to a
 lower-level route when your product needs more control.</p>
-<h2>Quick decision guide</h2>
+<h2 id="quick-decision-guide">Quick decision guide<a class="anchor" href="#quick-decision-guide" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -54,44 +54,44 @@ lower-level route when your product needs more control.</p>
 <td>Advanced account-based privacy route; verify wallet and API support before relying on it.</td>
 </tr>
 </tbody></table>
-<h2>Core surfaces</h2>
-<h3>STRK20 pool</h3>
+<h2 id="core-surfaces">Core surfaces<a class="anchor" href="#core-surfaces" aria-label="Link to this section">#</a></h2>
+<h3 id="strk20-pool">STRK20 pool<a class="anchor" href="#strk20-pool" aria-label="Link to this section">#</a></h3>
 <p>The pool is the base contract layer. Deposits move public ERC-20 tokens into the
 pool, private transfers spend encrypted notes inside the pool, and withdrawals
 move tokens back to a public address. Movement inside the pool hides sender,
 receiver, token, amount, and spent notes from public observers.</p>
-<h3>Starknet Wallet API</h3>
+<h3 id="starknet-wallet-api">Starknet Wallet API<a class="anchor" href="#starknet-wallet-api" aria-label="Link to this section">#</a></h3>
 <p>This is the recommended route for most <strong>private dapps</strong>. Your dapp asks the
 user&#39;s privacy-enabled wallet to perform an action; the wallet handles private
 state, proofs, and submission. A normal dapp should not receive the user&#39;s
 viewing key or manage note discovery directly. See the
 <a href="/starknet-wallet-api/overview">Starknet Wallet API overview</a>.</p>
-<h3>Anonymizer contracts</h3>
+<h3 id="anonymizer-contracts">Anonymizer contracts<a class="anchor" href="#anonymizer-contracts" aria-label="Link to this section">#</a></h3>
 <p>Anonymizer contracts, also called helper contracts, are app-specific Cairo
 adapters for private DeFi. The pool withdraws tokens to the helper, calls its
 <code>privacy_invoke</code> entry point, and the helper returns <code>OpenNoteDeposit</code>
 instructions for whatever should be credited back into private notes. This is the
 focus for <strong>core builders shipping private dapps</strong>. See
 <a href="/helpers/privacy-invoke">Anonymizer Contract Anatomy</a>.</p>
-<h3>Build Privacy Wallets</h3>
+<h3 id="build-privacy-wallets">Build Privacy Wallets<a class="anchor" href="#build-privacy-wallets" aria-label="Link to this section">#</a></h3>
 <p>The Build Privacy Wallets section is the lower-level SDK route for teams building
 <strong>privacy wallets on Starknet</strong>, account-controlled backends, and advanced
 integrators. Use it when you need to
 manage registration, channels, note discovery, transaction construction, and
 proving providers yourself. See <a href="/sdk/getting-started">Build Privacy Wallets</a>.</p>
-<h3>Private sub-accounts (coming soon)</h3>
+<h3 id="private-sub-accounts-coming-soon">Private sub-accounts (coming soon)<a class="anchor" href="#private-sub-accounts-coming-soon" aria-label="Link to this section">#</a></h3>
 <p>Private sub-accounts are for account-based app activity where the user does not
 want a public onchain link to their main wallet. Treat this as an advanced route:
 confirm wallet, SDK, API, and audit readiness before building a production flow
 around it.</p>
-<h3>Prover backend</h3>
+<h3 id="prover-backend">Prover backend<a class="anchor" href="#prover-backend" aria-label="Link to this section">#</a></h3>
 <p>Most dapps do not need to operate proving infrastructure. Wallets,
 infrastructure teams, and advanced integrators may run their own prover when
 they need operational control over proof generation. Deposit screening applies
 regardless of proving route: FPI screens shielding addresses and signs each
 deposit, and the pool verifies the signature onchain, so a self-hosted prover
 meets the same deposit-screening requirement as hosted services.</p>
-<h2>Builder rules of thumb</h2>
+<h2 id="builder-rules-of-thumb">Builder rules of thumb<a class="anchor" href="#builder-rules-of-thumb" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>Use the Starknet Wallet API first for user-facing private dapps.</li>
 <li>Use Build Privacy Wallets when you are building the wallet itself or need low-level SDK control.</li>
@@ -101,7 +101,7 @@ meets the same deposit-screening requirement as hosted services.</p>
 <li>Be explicit about what remains public: deposits, withdrawals, timing, and some app-side activity may still be visible.</li>
 <li>Verify wallet support, API versions, contract addresses, and compliance assumptions before launch.</li>
 </ul>
-<h2>Read next</h2>
+<h2 id="read-next">Read next<a class="anchor" href="#read-next" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="/what-is-strk20">What is STRK20?</a></li>
 <li><a href="/starknet-wallet-api/overview">Starknet Wallet API</a></li>

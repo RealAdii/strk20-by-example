@@ -10,41 +10,93 @@
   border-left: 1px solid var(--border-subtle);
 }
 
-/* Category kickers — mono, tracked wide, with the orange ◢ tick (brand eyebrow) */
-.category,
-.title {
+.section {
+  margin-bottom: 4px;
+}
+
+/* Category kickers — mono, tracked wide, with the orange ◢ tick (brand eyebrow).
+   Now buttons, so each section scopes open/closed. */
+.category {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
   color: var(--color-faint);
-  padding: 0 10px;
-  margin: 26px 0 10px 0;
+  padding: 8px 10px;
+  margin: 4px 0 4px 0;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.28em;
   line-height: 1.6;
+  border-radius: var(--r-sharp);
+  transition: color 0.15s var(--ease);
 }
-.category::before,
-.title::before {
-  content: "◢ ";
+.category:hover {
+  color: var(--color);
+  background-color: color-mix(in srgb, var(--color) 4%, transparent);
+}
+.tick {
   color: var(--accent);
   letter-spacing: 0;
+  line-height: 1.6;
 }
-.category {
-  margin-top: 4px;
+.categoryLabel {
+  flex: 1;
+  min-width: 0;
 }
+
+.chevron,
+.chevronOpen {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--color-faint);
+  transition: transform 0.2s var(--ease);
+}
+.chevron {
+  transform: rotate(0deg);
+}
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
 .group {
-  margin: 14px 0 16px 0;
+  margin: 10px 0 14px 0;
 }
 .groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
   font-family: var(--font-display);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.015em;
   color: var(--color);
-  padding: 0;
-  margin: 0 0 5px 10px;
-  font-size: 13px;
-  line-height: 1.1;
+  padding: 4px 10px;
+  margin: 0 0 4px 0;
+  font-size: 12.5px;
+  line-height: 1.15;
+  transition: color 0.15s var(--ease);
+}
+.groupTitle:hover {
+  color: var(--accent-strong);
+}
+.groupLabel {
+  flex: 1;
+  min-width: 0;
 }
 .listItem,
 .listItemActive {

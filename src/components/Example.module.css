@@ -1,8 +1,29 @@
 .component {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1180px;
 }
+
+/* prose column + right-rail TOC; the rail collapses away under 1280px */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 1280px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* split pages give the whole width to prose + code */
+.bodyWide {
+  display: block;
+}
+
 .content {
+  min-width: 0;
   margin: 15px 10px 15px 10px;
 }
 
@@ -13,7 +34,7 @@
   text-transform: uppercase;
   letter-spacing: -0.025em;
   line-height: 1.02;
-  font-size: clamp(28px, 4.4vw, 50px);
+  font-size: clamp(26px, 3.2vw, 38px);
   text-wrap: balance;
   margin: 0 0 12px 0;
   padding-top: 18px;
@@ -28,11 +49,11 @@
 .content h2,
 .content h3,
 .content h4 {
-  max-width: 72ch;
+  max-width: 62ch;
 }
 .content h2,
 .content h3 {
-  max-width: 60ch;
+  max-width: 52ch;
 }
 
 /* source pointer reads as a mono technical accent, not italic prose */

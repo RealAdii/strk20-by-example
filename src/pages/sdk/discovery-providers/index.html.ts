@@ -41,7 +41,7 @@ two implementations.</p>
 <td>Development, testing, no-extra-infra setups</td>
 </tr>
 </tbody></table>
-<h2>IndexerDiscoveryProvider</h2>
+<h2 id="indexerdiscoveryprovider">IndexerDiscoveryProvider<a class="anchor" href="#indexerdiscoveryprovider" aria-label="Link to this section">#</a></h2>
 <pre><code class="language-typescript"><span class="hljs-comment">// Deep import - the package-root export&#x27;s TypeScript declaration does not</span>
 <span class="hljs-comment">// currently satisfy DiscoveryProviderInterface at v0.14.2.</span>
 <span class="hljs-comment">// @ts-expect-error</span>
@@ -55,7 +55,7 @@ two implementations.</p>
 from the package root type-errors even though it works at runtime. When the
 SDK ships type-clean exports, drop the deep path and the <code>@ts-expect-error</code>
 in the same change.</p>
-<h2>ContractDiscoveryProvider</h2>
+<h2 id="contractdiscoveryprovider">ContractDiscoveryProvider<a class="anchor" href="#contractdiscoveryprovider" aria-label="Link to this section">#</a></h2>
 <pre><code class="language-typescript"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">ContractDiscoveryProvider</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"@starkware-libs/starknet-privacy-sdk"</span>
 
 <span class="hljs-keyword">const</span> discoveryProvider = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ContractDiscoveryProvider</span>(poolContract, {
@@ -65,7 +65,7 @@ in the same change.</p>
 burst of RPC calls. The <code>rateLimit</code> option (max concurrent requests plus a
 minimum delay between them) keeps you under public-RPC rate limits; without
 it, a full scan against a free endpoint gets you HTTP 429s mid-discovery.</p>
-<h2>Things to notice</h2>
+<h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>Both satisfy the same <code>DiscoveryProviderInterface</code> - swap them behind an
 environment variable and no other code changes.</li>

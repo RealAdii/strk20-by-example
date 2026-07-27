@@ -197,7 +197,7 @@ Ekubo, JediSwap, or any other DEX:</p>
         }
     }
 }
-</code></pre><h2>The balance-delta idiom</h2>
+</code></pre><h2 id="the-balance-delta-idiom">The balance-delta idiom<a class="anchor" href="#the-balance-delta-idiom" aria-label="Link to this section">#</a></h2>
 <p>The helper never trusts the AMM&#39;s return value. It measures what actually
 arrived:</p>
 <pre><code>balance_before = out_token.balance_of(helper)
@@ -206,7 +206,7 @@ out_amount = out_token.balance_of(helper) - balance_before
 </code></pre><p>This is what makes the pattern universal - it works with any external protocol
 regardless of its interface, handles fees-on-transfer, and guarantees the open
 note is credited with exactly the tokens the pool can actually pull.</p>
-<h2>Things to notice</h2>
+<h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>The AMM is pinned at deployment</strong> - <code>amm_address</code> and the swap <code>selector</code> are
 constructor parameters, so a deployed helper is a fixed, auditable route.</li>

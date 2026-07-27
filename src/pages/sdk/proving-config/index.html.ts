@@ -31,7 +31,7 @@ failures.</p>
   process.<span class="hljs-property">env</span>.<span class="hljs-property">PROVING_SERVICE_URL</span>!,
   constants.<span class="hljs-property">StarknetChainId</span>.<span class="hljs-property">SN_SEPOLIA</span>,
 )
-</code></pre><h2><code>provingBlockId</code> - always <code>currentBlock - 10</code></h2>
+</code></pre><h2 id="provingblockid---always-currentblock---10"><code>provingBlockId</code> - always <code>currentBlock - 10</code><a class="anchor" href="#provingblockid---always-currentblock---10" aria-label="Link to this section">#</a></h2>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> provingBlockId = (<span class="hljs-keyword">await</span> provider.<span class="hljs-title function_">getBlockNumber</span>()) - <span class="hljs-number">10</span>
 <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> transfers.<span class="hljs-title function_">build</span>().<span class="hljs-comment">/* ... */</span>.<span class="hljs-title function_">execute</span>({ provingBlockId })
 </code></pre><p>The proof is generated against the state at <code>provingBlockId</code>. Two reasons to
@@ -49,7 +49,7 @@ comfortable, still-fresh margin.</li>
 failures and worse proving-service cache hits. Just always pass it. And when
 chaining transactions (approve then deposit), re-fetch it after each
 <code>waitForTransaction</code>.</p>
-<h2><code>proofDetails</code> - conditional, never empty</h2>
+<h2 id="proofdetails---conditional-never-empty"><code>proofDetails</code> - conditional, never empty<a class="anchor" href="#proofdetails---conditional-never-empty" aria-label="Link to this section">#</a></h2>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> proofDetails = callAndProof.<span class="hljs-property">proof</span>.<span class="hljs-property">proofFacts</span>?.<span class="hljs-property">length</span>
   ? { <span class="hljs-attr">proofFacts</span>: callAndProof.<span class="hljs-property">proof</span>.<span class="hljs-property">proofFacts</span>, <span class="hljs-attr">proof</span>: callAndProof.<span class="hljs-property">proof</span>.<span class="hljs-property">data</span> }
   : {}
@@ -60,13 +60,13 @@ starknet.js serialize an invalid v3 transaction - the keys must be <strong>omitt
 entirely</strong>, hence the conditional spread. <code>tip: 0n</code> is mandatory for v3
 transactions; forgetting it fails with the cryptic
 <code>Cannot mix BigInt and other types</code>.</p>
-<h2>Retry hygiene: <code>invalidateProofNonceCache()</code></h2>
+<h2 id="retry-hygiene-invalidateproofnoncecache">Retry hygiene: <code>invalidateProofNonceCache()</code><a class="anchor" href="#retry-hygiene-invalidateproofnoncecache" aria-label="Link to this section">#</a></h2>
 <p>The proving provider caches the pool nonce. After any failed submission -
 a revert, <code>INVALID_NONCE</code>, <code>Replacement transaction underpriced</code> - the cache
 is stale, and retrying loops on proofs the chain keeps rejecting:</p>
 <pre><code class="language-typescript">transfers.<span class="hljs-title function_">invalidateProofNonceCache</span>()
 <span class="hljs-comment">// ...then rebuild and resubmit</span>
-</code></pre><h2>Deposits are screened on every proving route</h2>
+</code></pre><h2 id="deposits-are-screened-on-every-proving-route">Deposits are screened on every proving route<a class="anchor" href="#deposits-are-screened-on-every-proving-route" aria-label="Link to this section">#</a></h2>
 <p>A custom or self-hosted proving backend can prove every pool action, but a
 deposit is only accepted with a screening signature: FPI screens the
 depositing address and signs the deposit, and the pool verifies that
@@ -75,7 +75,7 @@ signature onchain. Self-hosting is not a route around screening.</p>
 wallet (Ready or Xverse) and then transfer privately to the account their
 integration controls. If your production flow needs direct deposits, raise it
 in the <a href="https://t.me/sncorestars">Cairo CoreStars Telegram</a>.</p>
-<h2>Common failures</h2>
+<h2 id="common-failures">Common failures<a class="anchor" href="#common-failures" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>

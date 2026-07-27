@@ -57,7 +57,7 @@ which of these is still missing.</p>
 <td>Nothing</td>
 </tr>
 </tbody></table>
-<h2>Opening channels explicitly</h2>
+<h2 id="opening-channels-explicitly">Opening channels explicitly<a class="anchor" href="#opening-channels-explicitly" aria-label="Link to this section">#</a></h2>
 <p><code>setup()</code> on the <strong>main builder</strong> opens the channel; <code>setup()</code> on the
 <strong>token builder</strong> opens the token subchannel. Bundle them with the transfer
 they unblock:</p>
@@ -75,12 +75,12 @@ builder.<span class="hljs-title function_">surplusTo</span>(account.<span class=
 builder.<span class="hljs-title function_">with</span>(tokenAddress, <span class="hljs-function">(<span class="hljs-params">t</span>) =&gt;</span> t.<span class="hljs-title function_">transfer</span>({ <span class="hljs-attr">recipient</span>: bob, <span class="hljs-attr">amount</span>: <span class="hljs-number">50n</span> }))
 <span class="hljs-keyword">const</span> { callAndProof } = <span class="hljs-keyword">await</span> builder.<span class="hljs-title function_">execute</span>({ provingBlockId })
 <span class="hljs-comment">// ... submission tail as usual</span>
-</code></pre><h2><code>autoSetup</code></h2>
+</code></pre><h2 id="autosetup"><code>autoSetup</code><a class="anchor" href="#autosetup" aria-label="Link to this section">#</a></h2>
 <p><code>build({ autoSetup: true })</code> adds the missing setup actions automatically -
 convenient for single-recipient flows. For batches, prefer the explicit
 pattern above: <code>autoSetup</code> decides from the <strong>local registry</strong>, and stale
 registry data makes it re-open already-open channels, which fails on-chain.</p>
-<h2>Things to notice</h2>
+<h2 id="things-to-notice">Things to notice<a class="anchor" href="#things-to-notice" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>The caller must be registered</strong> before calling <code>discoverRequirement</code> -
 it derives your channel keys from your on-chain viewing key. If you are

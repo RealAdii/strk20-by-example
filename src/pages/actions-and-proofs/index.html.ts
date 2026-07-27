@@ -73,7 +73,7 @@ never go backwards:</p>
 encode a given semantic operation, which closes whole classes of ordering bugs.
 <code>InvokeExternal</code> is the composability hook - it calls an anonymizer contract
 (escrow, DEX adapter, lending) at most once per transaction.</p>
-<h2>The balance invariant</h2>
+<h2 id="the-balance-invariant">The balance invariant<a class="anchor" href="#the-balance-invariant" aria-label="Link to this section">#</a></h2>
 <p>Within one transaction, the contract tracks a <strong>temporary balance per token</strong>:
 inflows (<code>Deposit</code>, <code>UseNote</code>) add, outflows (<code>CreateNote</code>, <code>Withdraw</code>)
 subtract. Two rules are enforced:</p>
@@ -95,7 +95,7 @@ subtract. Two rules are enforced:</p>
 }
 </code></pre><p>No value is created, destroyed, or left unaccounted - a transfer of 30 from a
 100-note <em>must</em> create outputs totaling 100 (30 to the recipient, 70 change).</p>
-<h2>From actions to an on-chain transaction</h2>
+<h2 id="from-actions-to-an-on-chain-transaction">From actions to an on-chain transaction<a class="anchor" href="#from-actions-to-an-on-chain-transaction" aria-label="Link to this section">#</a></h2>
 <pre><code>client builds actions
         │
         ▼

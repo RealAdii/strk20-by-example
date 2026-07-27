@@ -21,7 +21,7 @@ export const codes = []
 const html = `<p>Here&#39;s everything about getting started with building private applications.</p>
 <p>Starknet privacy has a small set of builder surfaces. Start with the highest-level
 route that fits your product, and only move lower when you need more control.</p>
-<h2>Choose your integration route</h2>
+<h2 id="choose-your-integration-route">Choose your integration route<a class="anchor" href="#choose-your-integration-route" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -46,7 +46,7 @@ route that fits your product, and only move lower when you need more control.</p
 <td>Private sub-accounts (coming soon)</td>
 </tr>
 </tbody></table>
-<h2>Core pieces</h2>
+<h2 id="core-pieces">Core pieces<a class="anchor" href="#core-pieces" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><strong>STRK20 Pool:</strong> the live Starknet mainnet pool that holds ERC-20s as encrypted
 notes and enables shielded balances, private transfers, and private DeFi.</li>
@@ -62,10 +62,10 @@ link between a user&#39;s main wallet and app activity.</li>
 <li><strong>Prover backend:</strong> infrastructure for teams that need to operate their own proof
 generation.</li>
 </ul>
-<h2>What stays visible</h2>
+<h2 id="what-stays-visible">What stays visible<a class="anchor" href="#what-stays-visible" aria-label="Link to this section">#</a></h2>
 <p>Inside the pool, sender, receiver, token, amount, and spent notes are private.
 Deposits, withdrawals, timing, and some app-side activity may still be public.</p>
-<h2>Read next</h2>
+<h2 id="read-next">Read next<a class="anchor" href="#read-next" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="/helpers/privacy-invoke">Anonymizer Contracts</a></li>
 <li><a href="/starknet-wallet-api/overview">Starknet Wallet API</a></li>
