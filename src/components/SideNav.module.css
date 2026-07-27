@@ -22,7 +22,7 @@
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  padding: 4px 10px 12px;
+  padding: 4px 6px 12px 10px;
   margin-bottom: 4px;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--color-faint);
@@ -32,6 +32,39 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   line-height: 1.5;
+}
+.railLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapse lives in the rail, where the thing it collapses is. */
+.collapse {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3px;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--color-faint);
+  cursor: pointer;
+  transition:
+    color 0.15s var(--ease),
+    border-color 0.15s var(--ease);
+}
+.collapse:hover {
+  color: var(--accent-strong);
+  border-color: var(--border-color);
+}
+
+/* On the mobile drawer the backdrop and the header button already close it. */
+@media (max-width: 900px) {
+  .collapse {
+    display: none;
+  }
 }
 .tick {
   color: var(--accent);

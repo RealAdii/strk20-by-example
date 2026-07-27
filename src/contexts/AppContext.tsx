@@ -56,7 +56,10 @@ export const Provider: React.FC<Props> = ({ children }) => {
       const theme: Theme = localStorage.getItem("theme") || "dark"
       let sideNav = params.width >= 500
       {
-        const val = localStorage.getItem("sideNav")
+        // Key renamed from "sideNav" when the rail became a persistent left
+        // sidebar, so anyone carrying a stale collapsed state gets the new
+        // default rather than an empty rail they didn't ask for.
+        const val = localStorage.getItem("sideNavOpen")
         if (val) {
           sideNav = val == "true"
         }
@@ -94,7 +97,7 @@ export const Provider: React.FC<Props> = ({ children }) => {
   function toggleSideNav() {
     const sideNav = !state.sideNav
     setState({ ...state, sideNav })
-    _saveToLocalStorage("sideNav", sideNav)
+    _saveToLocalStorage("sideNavOpen", sideNav)
   }
 
   return (

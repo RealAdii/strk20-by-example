@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react"
 import { useLocation, matchPath } from "react-router-dom"
 import styles from "./SideNav.module.css"
+import { useAppContext } from "../contexts/AppContext"
 import { Route, ROUTES_BY_CATEGORY, getCategoryIndexByPath } from "../nav"
 
 interface Props {
@@ -25,6 +26,7 @@ function readOverrides(): { [key: string]: boolean } {
 // shows one category's tree — the Stripe model. No category accordions here.
 const SideNav: React.FC<Props> = ({ onClick }) => {
   const location = useLocation()
+  const { toggleSideNav } = useAppContext()
 
   const index = getCategoryIndexByPath(location.pathname)
   // The home page sits above the tabs; show the first section there.
@@ -89,7 +91,28 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
     <>
       <div className={styles.railTitle}>
         <span className={styles.tick}>◢</span>
-        <span>{(title || tab).split("\n").join(" ")}</span>
+        <span className={styles.railLabel}>{(title || tab).split("\n").join(" ")}</span>
+        <button
+          className={styles.collapse}
+          onClick={toggleSideNav}
+          title="Collapse sidebar"
+          aria-label="Collapse sidebar"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M11 7l-5 5 5 5" />
+            <path d="M18 5v14" />
+          </svg>
+        </button>
       </div>
 
       {routes.length > 0 && renderRoutes(routes)}

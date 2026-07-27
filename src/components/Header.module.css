@@ -132,7 +132,8 @@
 }
 
 .mode,
-.navToggle {
+.navToggle,
+.navToggleWhenOpen {
   background-color: transparent;
   border: 1px solid transparent;
   cursor: pointer;
@@ -147,13 +148,24 @@
     transform 0.15s var(--ease);
 }
 .mode:hover,
-.navToggle:hover {
+.navToggle:hover,
+.navToggleWhenOpen:hover {
   color: var(--accent-strong);
   border-color: var(--border-color);
   transform: translateY(-1px);
 }
 .hamburger {
   display: block;
+}
+
+/* Desktop: while the rail is open there is a collapse control inside it, so
+   the header button would be a second control for the same thing. It comes
+   back the moment the rail is closed — otherwise there'd be no way to
+   reopen it. Below 900px it is the drawer toggle and always shows. */
+@media (min-width: 901px) {
+  .navToggleWhenOpen {
+    display: none;
+  }
 }
 
 /* ---------- row 2: product tabs ---------- */

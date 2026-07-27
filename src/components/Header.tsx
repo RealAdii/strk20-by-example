@@ -28,10 +28,13 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
       <div className={styles.bar}>
         <div className={styles.left}>
           <button
-            className={styles.navToggle}
+            /* On desktop this is only the *expand* control — while the rail is
+               open, collapsing happens from inside the rail. */
+            className={state.sideNav ? styles.navToggleWhenOpen : styles.navToggle}
             onClick={toggleSideNav}
-            title="Toggle navigation"
-            aria-label="Toggle navigation"
+            title={state.sideNav ? "Hide navigation" : "Show navigation"}
+            aria-label={state.sideNav ? "Hide navigation" : "Show navigation"}
+            aria-expanded={state.sideNav}
           >
             <Hamburger size={20} className={styles.hamburger} />
           </button>
