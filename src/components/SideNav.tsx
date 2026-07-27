@@ -140,10 +140,14 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
                         onClick={() => toggle(gKey)}
                         aria-expanded={gOpen}
                       >
-                        <span className={styles.groupLabel}>{group.title}</span>
-                        <span className={gOpen ? styles.chevronOpen : styles.chevron}>
+                        <span
+                          className={
+                            gOpen ? styles.groupChevronOpen : styles.groupChevron
+                          }
+                        >
                           ›
                         </span>
+                        <span className={styles.groupLabel}>{group.title}</span>
                       </button>
                       {gOpen && renderRoutes(group.routes, true)}
                     </div>

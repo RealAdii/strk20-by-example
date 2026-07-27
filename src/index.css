@@ -43,7 +43,8 @@
 }
 
 :root {
-  --side-nav-width: 272px;
+  /* wrapping labels need a touch more room than truncating ones did */
+  --side-nav-width: 284px;
   --min-main-width: 300px;
 
   --font-display: "Unison Pro", "Neue Montreal", "Helvetica Neue", sans-serif;

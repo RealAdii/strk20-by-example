@@ -1,21 +1,23 @@
+/* Indent scale — every label in the rail lands on one of three x positions:
+     25px  section kickers, top-level links, group labels
+     37px  links nested under a group
+   Keeping labels aligned is what makes a deep rail feel calm. */
 .list {
   list-style: none;
   padding: 0;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
 }
 .nestedList {
   list-style: none;
-  padding: 0 0 0 10px;
-  margin: 0 0 14px 0;
-  border-left: 1px solid var(--border-subtle);
+  padding: 0 0 0 27px;
+  margin: 0 0 10px 0;
 }
 
 .section {
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
-/* Category kickers — mono, tracked wide, with the orange ◢ tick (brand eyebrow).
-   Now buttons, so each section scopes open/closed. */
+/* Section kicker — mono, uppercase, orange ◢ tick (brand eyebrow). */
 .category {
   display: flex;
   align-items: flex-start;
@@ -26,25 +28,26 @@
   cursor: pointer;
   text-align: left;
   color: var(--color-faint);
-  padding: 8px 10px;
-  margin: 4px 0 4px 0;
+  padding: 9px 10px;
+  margin: 0 0 2px 0;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
-  line-height: 1.6;
+  /* 0.28em sprawled the longer kickers over three lines */
+  letter-spacing: 0.16em;
+  line-height: 1.5;
   border-radius: var(--r-sharp);
   transition: color 0.15s var(--ease);
 }
 .category:hover {
   color: var(--color);
-  background-color: color-mix(in srgb, var(--color) 4%, transparent);
 }
 .tick {
   color: var(--accent);
   letter-spacing: 0;
-  line-height: 1.6;
+  line-height: 1.5;
+  flex-shrink: 0;
 }
 .categoryLabel {
   flex: 1;
@@ -56,9 +59,10 @@
   flex-shrink: 0;
   font-family: var(--font-mono);
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.2;
   letter-spacing: 0;
-  color: var(--color-faint);
+  color: var(--color-ghost, var(--color-faint));
+  opacity: 0.6;
   transition: transform 0.2s var(--ease);
 }
 .chevron {
@@ -68,42 +72,61 @@
   transform: rotate(90deg);
 }
 
+/* Group parent — the "Use Payment Links" row: sentence case, medium weight,
+   full-strength ink, with the disclosure chevron in a left gutter so the
+   label still aligns to the 25px column. */
 .group {
-  margin: 10px 0 14px 0;
+  margin: 6px 0 10px 0;
 }
 .groupTitle {
   display: flex;
-  align-items: center;
-  gap: 7px;
+  align-items: baseline;
+  gap: 3px;
   width: 100%;
   background: transparent;
   border: 0;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-display);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0;
   color: var(--color);
-  padding: 4px 10px;
-  margin: 0 0 4px 0;
-  font-size: 12.5px;
-  line-height: 1.15;
+  padding: 7px 10px;
+  margin: 0;
+  line-height: 1.4;
   transition: color 0.15s var(--ease);
 }
 .groupTitle:hover {
   color: var(--accent-strong);
 }
+.groupChevron,
+.groupChevronOpen {
+  width: 12px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-faint);
+  transition: transform 0.2s var(--ease);
+}
+.groupChevron {
+  transform: rotate(0deg);
+}
+.groupChevronOpen {
+  transform: rotate(90deg);
+}
 .groupLabel {
   flex: 1;
   min-width: 0;
 }
+
 .listItem,
 .listItemActive {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  margin: 1px 0;
+  align-items: flex-start;
+  margin: 0;
   border-radius: var(--r-sharp);
   transition: background-color 0.15s var(--ease);
 }
@@ -115,15 +138,18 @@
   background: linear-gradient(90deg, var(--link-active-color), transparent 85%);
   box-shadow: inset 2px 0 0 var(--accent);
 }
+
+/* Labels wrap instead of truncating — an ellipsis in a nav hides exactly the
+   words that distinguish one entry from its siblings. */
 .link {
-  font-size: 13.5px;
-  text-decoration: none;
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   display: block;
   width: 100%;
-  padding: 6px 10px;
+  padding: 7px 10px 7px 25px;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: break-word;
   transition: color 0.15s var(--ease);
 }
 .listItem .link,
@@ -137,4 +163,18 @@
 .listItemActive .link:visited {
   color: var(--color);
   font-weight: 500;
+}
+
+/* Children read a step quieter than their parent — the hierarchy comes from
+   weight and ink, not from size alone. */
+.nestedList .link {
+  padding-left: 10px;
+  font-size: 13px;
+}
+.nestedList .listItem .link,
+.nestedList .listItem .link:visited {
+  color: var(--color-faint);
+}
+.nestedList .listItem:hover .link {
+  color: var(--color);
 }
