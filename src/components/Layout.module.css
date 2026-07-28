@@ -1,16 +1,26 @@
+/* Column: the top bar spans the full viewport, the rail sits under it. */
 .component {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
 }
+
+.row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 0;
+}
+
 .sideNav {
-  max-height: 100vh;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: var(--side-nav-color);
   /* one faint orange bloom at the top of the rail */
   background-image: radial-gradient(
-    ellipse 90% 40% at 0% 0%,
+    ellipse 90% 30% at 0% 0%,
     var(--accent-soft),
     transparent 60%
   );
@@ -18,14 +28,17 @@
   transition: width 0.3s var(--ease);
   flex-shrink: 0;
 }
+
 .main {
-  max-height: 100vh;
+  height: 100%;
   width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: auto;
 }
+
 .children {
   display: flex;
   flex-direction: column;
@@ -41,17 +54,19 @@
 
 /* ============================================================
    Narrow viewports — the rail becomes an overlay drawer.
-   In flow it is a fixed-width flex child, so it takes its 272px out of
+   In flow it is a fixed-width flex child, so it takes its width out of
    the content column: at 390px that left the page ~93px to render in.
    ============================================================ */
 @media (max-width: 900px) {
+  /* Positioned against .row, not the viewport, so the drawer starts below
+     the top bar without anyone having to hardcode its height. */
   .sideNav {
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 40;
-    max-height: none;
+    height: auto;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
   }
   .main {
@@ -61,7 +76,7 @@
   }
   .backdrop {
     display: block;
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 30;
     background: rgba(0, 0, 0, 0.6);

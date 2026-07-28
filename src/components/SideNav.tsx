@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react"
+import React, { useState } from "react"
 import { useLocation, matchPath } from "react-router-dom"
 import styles from "./SideNav.module.css"
 import { useAppContext } from "../contexts/AppContext"
-import { Route, ROUTES_BY_CATEGORY, getCategoryIndexByPath } from "../nav"
+import { Route, ROUTES_BY_CATEGORY } from "../nav"
 
 interface Props {
   onClick: (path: string) => void
@@ -22,34 +22,22 @@ function readOverrides(): { [key: string]: boolean } {
   }
 }
 
-// The product tabs in the header choose the section, so the rail only ever
-// shows one category's tree — the Stripe model. No category accordions here.
+// The rail carries the whole site: every section, in reading order. The
+// product tabs above mark where you are rather than filtering what's listed.
 const SideNav: React.FC<Props> = ({ onClick }) => {
   const location = useLocation()
   const { toggleSideNav } = useAppContext()
-
-  const index = getCategoryIndexByPath(location.pathname)
-  // The home page sits above the tabs; show the first section there.
-  const category = ROUTES_BY_CATEGORY[index == -1 ? 0 : index]
 
   function isActive(path: string) {
     return !!matchPath(path, location.pathname)
   }
 
-  // Groups still collapse, and the one holding the current page starts open.
-  const defaults = useMemo(() => {
-    const map: { [key: string]: boolean } = {}
-    for (const group of category.groups || []) {
-      map[groupKey(group.title)] = group.routes.some((r) => isActive(r.path))
-    }
-    return map
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, category])
-
   const [overrides, setOverrides] = useState<{ [key: string]: boolean }>(readOverrides)
 
+  // Everything starts open: the rail's job here is to show the whole site at
+  // a glance. Collapsing is available, just not the default.
   function expanded(key: string): boolean {
-    return overrides[key] ?? defaults[key] ?? true
+    return overrides[key] ?? true
   }
 
   function toggle(key: string) {
@@ -85,13 +73,9 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
     )
   }
 
-  const { routes = [], groups = [], title, tab } = category
-
   return (
     <>
-      <div className={styles.railTitle}>
-        <span className={styles.tick}>◢</span>
-        <span className={styles.railLabel}>{(title || tab).split("\n").join(" ")}</span>
+      <div className={styles.railHeader}>
         <button
           className={styles.collapse}
           onClick={toggleSideNav}
@@ -115,25 +99,47 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
         </button>
       </div>
 
-      {routes.length > 0 && renderRoutes(routes)}
-
-      {groups.map((group) => {
-        const gKey = groupKey(group.title)
-        const gOpen = expanded(gKey)
+      {ROUTES_BY_CATEGORY.map((category, i) => {
+        const { routes = [], groups = [], title, tab } = category
 
         return (
-          <div className={styles.group} key={gKey}>
-            <button
-              className={styles.groupTitle}
-              onClick={() => toggle(gKey)}
-              aria-expanded={gOpen}
-            >
-              <span className={gOpen ? styles.groupChevronOpen : styles.groupChevron}>
-                ›
+          <div className={styles.section} key={tab || i}>
+            <div className={styles.category}>
+              <span className={styles.tick}>◢</span>
+              <span className={styles.categoryLabel}>
+                {(title || tab).split("\n").map((line, j) => (
+                  <React.Fragment key={j}>
+                    {j > 0 && <br />}
+                    {line}
+                  </React.Fragment>
+                ))}
               </span>
-              <span className={styles.groupLabel}>{group.title}</span>
-            </button>
-            {gOpen && renderRoutes(group.routes, true)}
+            </div>
+
+            {routes.length > 0 && renderRoutes(routes)}
+
+            {groups.map((group) => {
+              const gKey = groupKey(group.title)
+              const gOpen = expanded(gKey)
+
+              return (
+                <div className={styles.group} key={gKey}>
+                  <button
+                    className={styles.groupTitle}
+                    onClick={() => toggle(gKey)}
+                    aria-expanded={gOpen}
+                  >
+                    <span
+                      className={gOpen ? styles.groupChevronOpen : styles.groupChevron}
+                    >
+                      ›
+                    </span>
+                    <span className={styles.groupLabel}>{group.title}</span>
+                  </button>
+                  {gOpen && renderRoutes(group.routes, true)}
+                </div>
+              )
+            })}
           </div>
         )
       })}

@@ -13,18 +13,32 @@
   margin: 0 0 10px 0;
 }
 
+/* sections separate by air plus a hairline, never a heavy divider */
 .section {
-  margin-bottom: 10px;
+  padding-top: 18px;
+  margin-bottom: 4px;
+}
+.section + .section {
+  border-top: 1px solid var(--border-subtle);
+}
+.section:first-of-type {
+  padding-top: 0;
 }
 
-/* Rail heading — names the section the product tab selected. */
-.railTitle {
+/* Rail header — just the collapse control, right-aligned. */
+.railHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 6px 6px 10px;
+}
+
+/* Section kicker — mono, uppercase, orange ◢ tick (brand eyebrow). Static:
+   the rail lists the whole site, so there is nothing here to open. */
+.category {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  padding: 4px 6px 12px 10px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 10px 8px;
   color: var(--color-faint);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -33,7 +47,7 @@
   letter-spacing: 0.16em;
   line-height: 1.5;
 }
-.railLabel {
+.categoryLabel {
   flex: 1;
   min-width: 0;
 }

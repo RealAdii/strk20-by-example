@@ -1,11 +1,12 @@
+/* Full-bleed: a flex row above the rail, spanning the viewport edge to edge.
+   No longer sticky — it sits outside the scrolling column, so it stays put
+   on its own. */
 .component {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: color-mix(in srgb, var(--bg-color) 92%, transparent);
-  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+  background-color: var(--bg-color);
   border-bottom: 1px solid var(--border-color);
-  min-width: var(--min-main-width);
 }
 
 /* single hairline orange rule pinned to the top edge — brand top-accent */
