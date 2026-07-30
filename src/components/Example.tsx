@@ -1,19 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useMemo } from "react"
 import { useLocation } from "react-router-dom"
-import Grainient from "./Grainient"
 import SEO from "./SEO"
 import Html from "./Html"
 import Toc from "./Toc"
 import SplitContent from "./SplitContent"
 import PageActions from "./PageActions"
+import InteractiveEmbed from "./InteractiveEmbed"
 import styles from "./Example.module.css"
 import { ROUTES_BY_CATEGORY, getCategoryIndexByPath } from "../nav"
-
-// One accent, always orange: a light tint, the accent, and the deep warm base
-// from the brand tokens so the wash resolves into the near-black canvas.
-const HERO_LIGHT = "#ff6a33"
-const HERO_ACCENT = "#c53400"
-const HERO_BASE = "#1a0a04"
 
 interface Path {
   title: string
@@ -52,15 +46,6 @@ const Example: React.FC<Props> = ({
   // The introduction *is* home, so "Home / Concepts / Introduction" would be
   // three names for where you already are.
   const isHome = location.pathname == "/"
-
-  const [reducedMotion, setReducedMotion] = useState(false)
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setReducedMotion(mq.matches)
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
-    mq.addEventListener("change", onChange)
-    return () => mq.removeEventListener("change", onChange)
-  }, [])
   // Most pages here carry only 1–2 short snippets; a sticky code rail on those
   // would just be an empty column. Only pages that are genuinely code-led split.
   const split = useMemo(() => {
@@ -79,32 +64,7 @@ const Example: React.FC<Props> = ({
       />
       <div className={split ? styles.bodyWide : styles.body}>
         <div className={styles.content} data-toc-root>
-          {isHome ? (
-            /* the brand's WebGL wash, kept as a contained band on the one page
-               that is also the landing page */
-            <div className={styles.banner} aria-hidden="true">
-              <Grainient
-                className={styles.bannerShader}
-                color1={HERO_LIGHT}
-                color2={HERO_ACCENT}
-                color3={HERO_BASE}
-                timeSpeed={0.1}
-                colorBalance={0.12}
-                warpFrequency={4}
-                warpSpeed={1}
-                warpAmplitude={70}
-                blendAngle={18}
-                blendSoftness={0.18}
-                rotationAmount={200}
-                noiseScale={1.5}
-                grainAmount={0.07}
-                contrast={1.15}
-                zoom={1}
-                paused={reducedMotion}
-              />
-              <div className={styles.bannerScrim} />
-            </div>
-          ) : (
+          {isHome ? null : (
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <a href="/">Home</a>
               {category ? (
@@ -122,6 +82,10 @@ const Example: React.FC<Props> = ({
           {description ? <p className={styles.subtitle}>{description}</p> : null}
 
           {markdown ? <PageActions title={title} markdown={markdown} /> : null}
+
+          {/* sits directly under the action row, so the introduction can be
+              played with before it has to be read */}
+          {isHome ? <InteractiveEmbed /> : null}
 
           {githubLink ? (
             <div className={styles.sourceLink}>

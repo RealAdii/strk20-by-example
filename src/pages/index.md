@@ -1,7 +1,7 @@
 ---
 title: Introduction
 version: 0.14.3
-description: Learn Starknet Privacy (STRK20) with simple, runnable examples — private transfers on a public chain, Cairo anonymizer contracts, and wallet-builder SDK flows.
+description: Learn Starknet Privacy (STRK20) with simple, runnable examples covering private transfers on a public chain, Cairo anonymizer contracts, and wallet-builder SDK flows
 keywords:
   [introduction, strk20, starknet privacy, by example, getting started, overview]
 ---
@@ -17,20 +17,20 @@ repository, so what you read matches what ships.
 
 ## What you'll find here
 
-- **Concepts** — the model underneath everything: notes and nullifiers, viewing
+- **Concepts:** the model underneath everything. Notes and nullifiers, viewing
   keys, channels, proofs, and how disclosure works. Read these once and the
   rest of the site stops being surprising.
-- **Get started: build private applications** — the two routes for app
+- **Get started: build private applications:** the two routes for app
   developers. Cairo anonymizer contracts for private DeFi, and the Starknet
   Wallet API for private dapps through `starknet.js`.
-- **Build privacy wallets** — the low-level SDK, for wallets and backends that
+- **Build privacy wallets:** the low-level SDK, for wallets and backends that
   need direct control over registration, note discovery, and proving.
 
 ## Where to start
 
 Pick the row that matches what you're building:
 
-| If you want to…                         | Start at                                             |
+| If you want to                          | Start at                                             |
 | --------------------------------------- | ---------------------------------------------------- |
 | Understand what STRK20 actually is      | [What is STRK20?](/what-is-strk20)                   |
 | Choose an integration route             | [Builder Privacy Overview](/overview)                |
@@ -39,7 +39,7 @@ Pick the row that matches what you're building:
 | Build a privacy wallet                  | [Getting Started with the SDK](/sdk/getting-started) |
 
 If you are only here for one thing, read
-[Notes & Nullifiers](/notes-and-nullifiers) — nearly every other page assumes
+[Notes & Nullifiers](/notes-and-nullifiers). Nearly every other page assumes
 it.
 
 ## What stays private, and what doesn't
@@ -53,7 +53,7 @@ need to prove something to a regulator.
 
 ## Conventions on this site
 
-- Pages are ordered as a reading path — the **Previous / Next** links at the
+- Pages are ordered as a reading path. The **Previous / Next** links at the
   bottom of each page follow it.
 - Code blocks are copyable, and every page can be taken away as Markdown or
   handed to an assistant with the actions under its title.

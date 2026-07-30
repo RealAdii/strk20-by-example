@@ -1,0 +1,123 @@
+.wrap,
+.wrapExpanded {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-sharp);
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+
+.wrap {
+  margin: 0 0 34px;
+  height: clamp(360px, 52vh, 560px);
+}
+
+/* Expanded: covers the viewport rather than entering native fullscreen, which
+   browsers can block and which drops the reader out of the page entirely. */
+.wrapExpanded {
+  position: fixed;
+  inset: 16px;
+  z-index: 80;
+  height: auto;
+  box-shadow: 0 40px 120px -20px rgba(0, 0, 0, 0.9);
+}
+
+/* control strip */
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 12px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color);
+}
+
+.label {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-faint);
+}
+.tick {
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.newTab,
+.newTab:visited {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-faint);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s var(--ease);
+}
+.newTab::after {
+  content: " ↗";
+  color: var(--accent);
+}
+.newTab:hover {
+  color: var(--color);
+}
+
+/* Revealed on hover, per the ask — but always present for keyboard users,
+   who get no hover to trigger it with. */
+.expand {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--color-faint);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.15s var(--ease),
+    color 0.15s var(--ease),
+    border-color 0.15s var(--ease),
+    transform 120ms var(--ease);
+}
+.wrap:hover .expand,
+.wrapExpanded:hover .expand,
+.expand:focus-visible,
+.wrapExpanded .expand {
+  opacity: 1;
+}
+.expand:hover {
+  color: var(--accent-strong);
+  border-color: var(--border-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .expand:active {
+    transform: scale(0.94);
+  }
+}
+/* No hover on touch, so never hide it there. */
+@media (hover: none) {
+  .expand {
+    opacity: 1;
+  }
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  height: calc(100% - 37px);
+  border: 0;
+  background: var(--bg-color);
+}
+
+@media (max-width: 700px) {
+  .newTab {
+    display: none;
+  }
+}
