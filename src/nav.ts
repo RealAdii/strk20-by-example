@@ -20,6 +20,11 @@ export interface RouteCategory {
 // Concepts - root paths. Order = reading order (prev/next follows array order).
 export const CONCEPT_ROUTES: Route[] = [
   {
+    // empty path prefixes to "/" — the home page *is* the introduction
+    path: "",
+    title: "Introduction",
+  },
+  {
     path: "what-is-strk20",
     title: "What is STRK20?",
   },

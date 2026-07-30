@@ -1,214 +1,38 @@
-import React, { useState, useEffect } from "react"
-import { useSearchParams } from "react-router-dom"
-import SEO from "../components/SEO"
-import SearchBar from "../components/SearchBar"
-import Strk20 from "../components/svg/Strk20"
-import Grainient from "../components/Grainient"
-import { useAppContext } from "../contexts/AppContext"
-import useDebounce from "../hooks/useDebounce"
-import { search, unique } from "../lib/search"
-import styles from "./index.module.css"
-import { ROUTES, ROUTES_BY_CATEGORY } from "../nav"
+import React from "react"
+import Example from "../components/Example"
+import html, {
+  version,
+  title,
+  description,
+  githubLink,
+  githubLabel,
+  markdown,
+} from "./index.html"
 
-// Micro/meta copy reads like a filing (brand voice).
-const UPDATES = ["Release · 2026.07.08", "Status · Live"]
+interface Path {
+  path: string
+  title: string
+}
 
-// One accent, always orange. Light tint -> the accent itself -> the deep warm
-// base already in the brand tokens (it's the text colour on an orange
-// selection), so the wash resolves into the near-black canvas.
-const HERO_LIGHT = "#ff6a33"
-const HERO_ACCENT = "#c53400"
-const HERO_BASE = "#1a0a04"
+interface Props {
+  prev: Path | null
+  next: Path | null
+}
 
-export default function HomePage() {
-  const { state } = useAppContext()
-  const [query, setQuery] = useState("")
-  const [reducedMotion, setReducedMotion] = useState(false)
-  // Don't spin up a WebGL context on phones just for hero decoration.
-  const [wideEnough, setWideEnough] = useState(false)
-
-  useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const wide = window.matchMedia("(min-width: 768px)")
-    setReducedMotion(motion.matches)
-    setWideEnough(wide.matches)
-
-    const onMotion = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
-    const onWide = (e: MediaQueryListEvent) => setWideEnough(e.matches)
-    motion.addEventListener("change", onMotion)
-    wide.addEventListener("change", onWide)
-    return () => {
-      motion.removeEventListener("change", onMotion)
-      wide.removeEventListener("change", onWide)
-    }
-  }, [])
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [searchResults, setSearchResults] = useState<{
-    [key: string]: boolean
-  } | null>(null)
-
-  useEffect(() => {
-    const q = searchParams.get("q")
-    if (q != null && q.length > 0) {
-      setQuery(q)
-      _search(q, false)
-    }
-  }, [])
-
-  function _search(query: string, save: boolean) {
-    const q = query.trim()
-
-    if (q.length == 0) {
-      setSearchResults(null)
-      if (save) {
-        setSearchParams({ q: "" })
-      }
-      return
-    }
-
-    const words = unique(q.split(" "))
-    const pages: { [key: string]: boolean } = {}
-
-    for (const word of words) {
-      const res = search(word)
-      for (const page of res) {
-        pages[page] = true
-      }
-    }
-
-    setSearchResults(pages)
-    if (save) {
-      setSearchParams({ q })
-    }
-  }
-
-  const _searchWithDelay = useDebounce((query: string) => _search(query, true), 500, [])
-
-  function onChangeSearchQuery(query: string) {
-    setQuery(query)
-    _searchWithDelay(query)
-  }
-
-  function renderLinks() {
-    if (searchResults) {
-      if (Object.keys(searchResults).length == 0) {
-        return <div className={styles.noResults}>No results</div>
-      }
-
-      return (
-        <ul className={styles.searchResultList}>
-          {ROUTES.filter(({ path }) => searchResults[path]).map(({ path, title }) => (
-            <li className={styles.listItem} key={path}>
-              <a href={path}>{title}</a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-
-    return (
-      <div className={styles.grid}>
-        {ROUTES_BY_CATEGORY.map(({ routes = [], groups = [], title }, i) => (
-          <section className={styles.card} key={i}>
-            <span className={styles.ghostNum} aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <h3 className={styles.category}>{title || "Concepts"}</h3>
-
-            {routes.length > 0 && (
-              <ul className={styles.list}>
-                {routes.map(({ path, title }) => (
-                  <li className={styles.listItem} key={path}>
-                    <a href={path}>{title}</a>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {groups.map((group) => (
-              <div key={group.title}>
-                <h4 className={styles.groupTitle}>{group.title}</h4>
-                <ul className={styles.list}>
-                  {group.routes.map(({ path, title }) => (
-                    <li className={styles.listItem} key={path}>
-                      <a href={path}>{title}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </section>
-        ))}
-      </div>
-    )
-  }
-
+const ExamplePage: React.FC<Props> = ({ prev, next }) => {
   return (
-    <div className={styles.component}>
-      <SEO
-        title="STRK20 by Example"
-        description="Learn Starknet Privacy (STRK20) with simple examples - privacy pools, notes and nullifiers, viewing keys, the Starknet Wallet API, anonymizer contracts, and wallet-builder SDK flows"
-      />
-      <div className={styles.hero}>
-        {/* brand.md calls for a WebGL wash tinted #c53400 behind a darkening
-            scrim on hero surfaces. Dark only: the 'lighten' blend has nothing
-            to lift on the warm-paper canvas. */}
-        {state.theme == "dark" && wideEnough ? (
-          <div className={styles.heroShader} aria-hidden="true">
-            <Grainient
-              className={styles.heroGrainient}
-              color1={HERO_LIGHT}
-              color2={HERO_ACCENT}
-              color3={HERO_BASE}
-              timeSpeed={0.12}
-              colorBalance={0.1}
-              warpStrength={1}
-              warpFrequency={4}
-              warpSpeed={1.1}
-              warpAmplitude={62}
-              blendAngle={18}
-              blendSoftness={0.16}
-              rotationAmount={220}
-              noiseScale={1.6}
-              grainAmount={0.08}
-              grainScale={2}
-              contrast={1.2}
-              saturation={1.05}
-              zoom={1}
-              paused={reducedMotion}
-            />
-            <div className={styles.heroScrim} />
-          </div>
-        ) : null}
-        <h1 className={styles.header}>
-          <a href="/" className={styles.headerLink}>
-            <Strk20 size={64} className={styles.heroLogo} />
-            <span className={styles.byExample}>by Example</span>
-          </a>
-        </h1>
-        <div className={styles.subHeader}>
-          <span className={styles.tick}>◢</span> Starknet Privacy
-        </div>
-        <p className={styles.intro}>
-          An introduction to{" "}
-          <a href="https://docs.starknet.io/build/starknet-privacy/overview">
-            Starknet Privacy
-          </a>{" "}
-          with simple examples: private transfers on a public chain, the Starknet Wallet
-          API, Cairo anonymizer contracts, and wallet-builder SDK flows.
-        </p>
-
-        <div className={styles.updates}>
-          <span className={styles.statusDot} aria-hidden="true" />
-          {UPDATES.join("  /  ")}
-        </div>
-
-        <div className={styles.search}>
-          <SearchBar value={query} onChange={onChangeSearchQuery} />
-        </div>
-      </div>
-
-      {renderLinks()}
-    </div>
+    <Example
+      version={version}
+      title={title}
+      description={description}
+      githubLink={githubLink}
+      githubLabel={githubLabel}
+      html={html}
+      markdown={markdown}
+      prev={prev}
+      next={next}
+    />
   )
 }
+
+export default ExamplePage

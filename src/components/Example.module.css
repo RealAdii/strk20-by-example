@@ -23,8 +23,49 @@
 }
 
 .content {
+  position: relative;
   min-width: 0;
   margin: 15px 10px 15px 10px;
+}
+/* above the wash */
+.content > .title,
+.content > .subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+/* Introduction wash — the brand's WebGL gradient sitting *behind* the page
+   title as ambient light, not as a band above it. As a discrete rectangle it
+   read as a stray orange bar; masked radially it reads as the page being lit.
+   Inset horizontally to 0 so it can never widen the scroll container. */
+.banner {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 320px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+/* The ellipse is sized and centred so the fade reaches zero before every
+   edge of the box — otherwise overflow:hidden cuts it into a visible
+   rectangle, which is what a "glow" must never look like. */
+.bannerShader {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(
+    ellipse 52% 55% at 40% 40%,
+    #000 0%,
+    transparent 58%
+  );
+  mask-image: radial-gradient(ellipse 52% 55% at 40% 40%, #000 0%, transparent 58%);
+}
+.bannerScrim {
+  display: none;
+}
+:global(body.light) .banner {
+  display: none;
 }
 
 /* Breadcrumbs — mono, quiet, the orange slash keeping the accent present */

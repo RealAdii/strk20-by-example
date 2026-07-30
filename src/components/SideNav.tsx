@@ -100,21 +100,12 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
       </div>
 
       {ROUTES_BY_CATEGORY.map((category, i) => {
-        const { routes = [], groups = [], title, tab } = category
+        const { routes = [], groups = [], tab } = category
 
         return (
           <div className={styles.section} key={tab || i}>
-            <div className={styles.category}>
-              <span className={styles.tick}>◢</span>
-              <span className={styles.categoryLabel}>
-                {(title || tab).split("\n").map((line, j) => (
-                  <React.Fragment key={j}>
-                    {j > 0 && <br />}
-                    {line}
-                  </React.Fragment>
-                ))}
-              </span>
-            </div>
+            {/* the short label: `title` runs to two lines for some sections */}
+            <div className={styles.category}>{tab}</div>
 
             {routes.length > 0 && renderRoutes(routes)}
 
