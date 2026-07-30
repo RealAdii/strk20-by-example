@@ -136,7 +136,13 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
                     </span>
                     <span className={styles.groupLabel}>{group.title}</span>
                   </button>
-                  {gOpen && renderRoutes(group.routes, true)}
+                  {/* grid 0fr->1fr collapses to content height without anyone
+                      measuring it; the list stays mounted so it animates */}
+                  <div className={gOpen ? styles.collapsibleOpen : styles.collapsible}>
+                    <div className={styles.collapsibleInner}>
+                      {renderRoutes(group.routes, true)}
+                    </div>
+                  </div>
                 </div>
               )
             })}

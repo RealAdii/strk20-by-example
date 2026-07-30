@@ -588,6 +588,25 @@ body.light .hljs-deletion {
   transition: color linear 0.2s;
 }
 
+/* ============================================================
+   Press feedback. Every control here is hit tens of times a day, which
+   caps this at "near-imperceptible": 0.97 at 120ms, inside the 100–160ms
+   press budget. Pointer-gated — on touch the finger already covers it.
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  .press:active {
+    transform: scale(0.97);
+  }
+  /* controls that already lift on hover keep the lift and add the press */
+  .press-lift:active {
+    transform: translateY(-1px) scale(0.97);
+  }
+}
+.press,
+.press-lift {
+  transition: transform 120ms var(--ease);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

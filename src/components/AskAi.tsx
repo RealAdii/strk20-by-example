@@ -69,7 +69,7 @@ const AskAi: React.FC = () => {
   return (
     <div className={styles.wrap} ref={ref}>
       <button
-        className={open ? styles.buttonOpen : styles.button}
+        className={`${open ? styles.buttonOpen : styles.button} press`}
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="menu"

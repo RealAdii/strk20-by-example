@@ -93,6 +93,37 @@
 .group {
   margin: 6px 0 10px 0;
 }
+
+/* Accordion: 180ms is inside the dropdown budget and stops the rows below
+   from teleporting when a group opens. grid 0fr->1fr collapses to content
+   height without measuring it; visibility trails the collapse so hidden
+   links leave the tab order without cutting the animation short. */
+.collapsible,
+.collapsibleOpen {
+  display: grid;
+  transition:
+    grid-template-rows 180ms var(--ease),
+    opacity 180ms var(--ease);
+}
+.collapsible {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 180ms var(--ease),
+    opacity 180ms var(--ease),
+    visibility 0s 180ms;
+}
+.collapsibleOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+}
+.collapsibleInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
 .groupTitle {
   display: flex;
   align-items: baseline;

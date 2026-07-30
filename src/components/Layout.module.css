@@ -14,6 +14,7 @@
 }
 
 .sideNav {
+  width: 0;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -25,8 +26,32 @@
     transparent 60%
   );
   background-repeat: no-repeat;
-  transition: width 0.3s var(--ease);
+  border-right: 1px solid transparent;
   flex-shrink: 0;
+  /* visibility trails the collapse, so the links leave the tab order
+     without the rail vanishing before it has finished closing */
+  visibility: hidden;
+  transition:
+    width 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    visibility 0s 0.3s;
+}
+.sideNavOpen {
+  width: var(--side-nav-width);
+  border-right-color: var(--border-color);
+  visibility: visible;
+  transition:
+    width 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    visibility 0s;
+}
+
+/* Fixed width regardless of the parent's animated width — this is what stops
+   the labels re-wrapping on every frame while the rail opens or closes. */
+.sideNavInner {
+  width: var(--side-nav-width);
+  padding: 16px 12px 60px 12px;
+  box-sizing: border-box;
 }
 
 .main {
@@ -60,6 +85,8 @@
 @media (max-width: 900px) {
   /* Positioned against .row, not the viewport, so the drawer starts below
      the top bar without anyone having to hardcode its height. */
+  /* An overlay reserves no space, so it can slide on transform instead of
+     width — no layout work per frame at all. */
   .sideNav {
     position: absolute;
     top: 0;
@@ -67,7 +94,19 @@
     left: 0;
     z-index: 40;
     height: auto;
+    width: var(--side-nav-width);
+    transform: translateX(-100%);
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+    transition:
+      transform 0.3s var(--ease),
+      visibility 0s 0.3s;
+  }
+  .sideNavOpen {
+    width: var(--side-nav-width);
+    transform: translateX(0);
+    transition:
+      transform 0.3s var(--ease),
+      visibility 0s;
   }
   .main {
     width: 100%;

@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
           <button
             /* On desktop this is only the *expand* control — while the rail is
                open, collapsing happens from inside the rail. */
-            className={state.sideNav ? styles.navToggleWhenOpen : styles.navToggle}
+            className={`${state.sideNav ? styles.navToggleWhenOpen : styles.navToggle} press-lift`}
             onClick={toggleSideNav}
             title={state.sideNav ? "Hide navigation" : "Show navigation"}
             aria-label={state.sideNav ? "Hide navigation" : "Show navigation"}
@@ -50,7 +50,7 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
 
         <div className={styles.center}>
           <button
-            className={styles.search}
+            className={`${styles.search} press`}
             onClick={onOpenSearch}
             aria-label="Search the docs"
           >
@@ -63,7 +63,7 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
 
         <div className={styles.right}>
           <button
-            className={styles.mode}
+            className={`${styles.mode} press-lift`}
             onClick={onClickTheme}
             title={
               state.theme == "dark" ? "Switch to light mode" : "Switch to dark mode"

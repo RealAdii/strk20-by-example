@@ -58,22 +58,18 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Header onOpenSearch={() => setSearchOpen(true)} />
 
       <div className={styles.row}>
+        {/* The rail stays mounted at a fixed inner width: animating the outer
+            width alone would re-wrap every label on each frame of the
+            collapse. Keeping it mounted is also what lets it animate at all
+            — unmounting on close means there is nothing left to transition. */}
         <div
           ref={ref}
-          className={styles.sideNav}
-          style={
-            state.sideNav
-              ? {
-                  width: "var(--side-nav-width)",
-                  padding: "16px 12px 60px 12px",
-                  borderRight: "1px solid var(--border-color)",
-                }
-              : {
-                  width: 0,
-                }
-          }
+          className={`${styles.sideNav} ${state.sideNav ? styles.sideNavOpen : ""}`}
+          aria-hidden={!state.sideNav}
         >
-          {state.sideNav ? <SideNav onClick={onClick} /> : null}
+          <div className={styles.sideNavInner}>
+            <SideNav onClick={onClick} />
+          </div>
         </div>
         {/* tap-outside-to-close for the mobile drawer; CSS hides it on desktop */}
         {state.sideNav ? (
