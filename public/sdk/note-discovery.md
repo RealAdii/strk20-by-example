@@ -2,7 +2,7 @@
 
 > Scan your channels for unspent notes with discoverNotes and discoverChannels
 
-Source: https://strk20-by-example.org/sdk/note-discovery
+Source: https://strk20.starknet.io/docs/sdk/note-discovery
 
 Discovery scans your channels and decrypts the notes addressed to you. It is
 a **query, not a transaction** - no proof, no fee, no submission. Use it to

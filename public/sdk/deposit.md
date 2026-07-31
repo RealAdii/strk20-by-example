@@ -2,7 +2,7 @@
 
 > Approve the pool, then deposit public ERC-20 tokens into a private note
 
-Source: https://strk20-by-example.org/sdk/deposit
+Source: https://strk20.starknet.io/docs/sdk/deposit
 
 A deposit moves public ERC-20 tokens into the pool and mints a private note.
 The pool pulls tokens with `transfer_from` while the proof executes, so the

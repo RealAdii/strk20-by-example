@@ -2,7 +2,7 @@
 
 > Directional channels, per-token subchannels and the scan algorithm recipients use to find their notes
 
-Source: https://strk20-by-example.org/channels-and-subchannels
+Source: https://strk20.starknet.io/docs/channels-and-subchannels
 
 There is no "inbox" for private payments. Encrypted notes sit silently in the
 pool's storage until the recipient looks for them. **Channels** make that

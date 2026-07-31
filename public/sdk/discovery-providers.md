@@ -2,7 +2,7 @@
 
 > Choose between IndexerDiscoveryProvider and ContractDiscoveryProvider
 
-Source: https://strk20-by-example.org/sdk/discovery-providers
+Source: https://strk20.starknet.io/docs/sdk/discovery-providers
 
 Everything on the previous page - `discoverNotes`, `discoverChannels`,
 `discoverRequirement`, the `autoDiscover` options - is served by the

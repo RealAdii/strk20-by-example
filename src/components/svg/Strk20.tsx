@@ -1,5 +1,6 @@
 import React from "react"
 import { useAppContext } from "../../contexts/AppContext"
+import { withBase } from "../../lib/url"
 
 interface Props {
   size: number
@@ -13,7 +14,9 @@ const Strk20: React.FC<Props> = ({ size, className = "" }) => {
 
   return (
     <img
-      src={state.theme === "dark" ? "/strk20-logo.svg" : "/strk20-logo-onlight.svg"}
+      src={withBase(
+        state.theme === "dark" ? "/strk20-logo.svg" : "/strk20-logo-onlight.svg",
+      )}
       alt="STRK20"
       height={size}
       style={{ height: size, width: "auto", display: "block" }}

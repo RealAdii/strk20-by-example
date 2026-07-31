@@ -2,7 +2,7 @@
 
 > Call the Starknet Wallet API directly with starknet.js WalletAccountV6 for non-React apps or finer control.
 
-Source: https://strk20-by-example.org/starknet-wallet-api/starknet-js
+Source: https://strk20.starknet.io/docs/starknet-wallet-api/starknet-js
 
 The **`starknet.js` `WalletAccountV6` API** is the direct way to reach the
 [Starknet Wallet API](/starknet-wallet-api/overview). Use it when you are working

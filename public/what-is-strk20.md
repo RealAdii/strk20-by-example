@@ -2,7 +2,7 @@
 
 > An introduction to Starknet Privacy - confidential token transfers on a public chain
 
-Source: https://strk20-by-example.org/what-is-strk20
+Source: https://strk20.starknet.io/docs/what-is-strk20
 
 The foundation for all privacy on Starknet: the layer everything above reads from
 and writes to. STRK20 brings shielded balances, private transfers, and private

@@ -2,7 +2,7 @@
 
 > The phased action model, the per-token balance invariant, and how transactions are proven with Stwo
 
-Source: https://strk20-by-example.org/actions-and-proofs
+Source: https://strk20.starknet.io/docs/actions-and-proofs
 
 Every pool transaction is a batch of **client actions**. Actions are grouped
 into phases with a fixed ordering - a transaction may skip phases, but must

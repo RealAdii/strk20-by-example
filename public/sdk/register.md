@@ -2,7 +2,7 @@
 
 > Register your viewing key in the privacy pool with the builder or autoRegister
 
-Source: https://strk20-by-example.org/sdk/register
+Source: https://strk20.starknet.io/docs/sdk/register
 
 Before an account can receive private transfers it must **register**: publish
 its public viewing key on-chain and store the auditor-encrypted private key.

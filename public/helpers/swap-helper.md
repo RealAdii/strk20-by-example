@@ -2,7 +2,7 @@
 
 > A DEX swap anonymizer contract - trade privately through any AMM using the balance-delta idiom
 
-Source: https://strk20-by-example.org/helpers/swap-helper
+Source: https://strk20.starknet.io/docs/helpers/swap-helper
 
 The swap helper lets pool funds trade on an external AMM without revealing the
 trader. The pool withdraws the input token to the helper, the helper swaps on the

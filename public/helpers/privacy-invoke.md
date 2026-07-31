@@ -2,7 +2,7 @@
 
 > The privacy_invoke pattern - how the pool calls external contracts and credits open notes
 
-Source: https://strk20-by-example.org/helpers/privacy-invoke
+Source: https://strk20.starknet.io/docs/helpers/privacy-invoke
 
 Anonymizer contracts (also called **helper contracts**) are how private funds
 interact with the outside world - DEXs, lending vaults, escrows - without

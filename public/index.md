@@ -2,7 +2,7 @@
 
 > Learn Starknet Privacy (STRK20) with simple, runnable examples covering private transfers on a public chain, Cairo anonymizer contracts, and wallet-builder SDK flows
 
-Source: https://strk20-by-example.org/
+Source: https://strk20.starknet.io/docs/
 
 STRK20 brings shielded balances, private transfers, and private DeFi to any
 ERC-20 on Starknet. This site teaches it the way

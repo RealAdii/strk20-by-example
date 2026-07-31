@@ -2,7 +2,7 @@
 
 > Chain several operations on one token and several tokens in a single transaction
 
-Source: https://strk20-by-example.org/sdk/multi-op-batch
+Source: https://strk20.starknet.io/docs/sdk/multi-op-batch
 
 One build = one transaction = one proof. Inside it you can chain any number
 of operations on a token, and any number of tokens via repeated `.with(...)`

@@ -2,7 +2,7 @@
 
 > The standard route for private dapps on Starknet: ask a privacy-enabled wallet to shield, transfer, and withdraw via starknet.js.
 
-Source: https://strk20-by-example.org/starknet-wallet-api/overview
+Source: https://strk20.starknet.io/docs/starknet-wallet-api/overview
 
 The **Starknet Wallet API** is the recommended route for most **private dapps**.
 Instead of managing private state yourself, your dapp asks the user's

@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://strk20-by-example.org/</loc>
+    <loc>https://strk20.starknet.io/docs/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/actions-and-proofs</loc>
+    <loc>https://strk20.starknet.io/docs/actions-and-proofs</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/app/anonymous-airdrop</loc>
+    <loc>https://strk20.starknet.io/docs/app/anonymous-airdrop</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/builder-privacy-overview</loc>
+    <loc>https://strk20.starknet.io/docs/builder-privacy-overview</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/channels-and-subchannels</loc>
+    <loc>https://strk20.starknet.io/docs/channels-and-subchannels</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/compliance</loc>
+    <loc>https://strk20.starknet.io/docs/compliance</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/helpers/escrow</loc>
+    <loc>https://strk20.starknet.io/docs/helpers/escrow</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/helpers/privacy-invoke</loc>
+    <loc>https://strk20.starknet.io/docs/helpers/privacy-invoke</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/helpers/swap-helper</loc>
+    <loc>https://strk20.starknet.io/docs/helpers/swap-helper</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/helpers/vesu-lending-helper</loc>
+    <loc>https://strk20.starknet.io/docs/helpers/vesu-lending-helper</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/notes-and-nullifiers</loc>
+    <loc>https://strk20.starknet.io/docs/notes-and-nullifiers</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/overview</loc>
+    <loc>https://strk20.starknet.io/docs/overview</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/deposit</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/deposit</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/deposit-transfer-surplus</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/deposit-transfer-surplus</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/discovery-providers</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/discovery-providers</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/getting-started</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/getting-started</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/multi-op-batch</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/multi-op-batch</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/note-discovery</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/note-discovery</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/proving-config</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/proving-config</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/register</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/register</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/setup-requirements</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/setup-requirements</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/transfer</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/transfer</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/sdk/withdraw</loc>
+    <loc>https://strk20.starknet.io/docs/sdk/withdraw</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/starknet-wallet-api/overview</loc>
+    <loc>https://strk20.starknet.io/docs/starknet-wallet-api/overview</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/starknet-wallet-api/starknet-js</loc>
+    <loc>https://strk20.starknet.io/docs/starknet-wallet-api/starknet-js</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/starknet-wallet-api/starknet-start-hook</loc>
+    <loc>https://strk20.starknet.io/docs/starknet-wallet-api/starknet-start-hook</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/viewing-keys</loc>
+    <loc>https://strk20.starknet.io/docs/viewing-keys</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://strk20-by-example.org/what-is-strk20</loc>
+    <loc>https://strk20.starknet.io/docs/what-is-strk20</loc>
     <priority>0.8</priority>
   </url>
 </urlset>

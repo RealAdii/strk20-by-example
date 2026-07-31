@@ -5,6 +5,7 @@ import SideNav from "./SideNav"
 import Header from "./Header"
 import Footer from "./Footer"
 import SearchOverlay from "./SearchOverlay"
+import { withBase } from "../lib/url"
 
 interface Props {
   children: React.ReactNode
@@ -44,7 +45,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
   function onClick(path: string) {
     sessionStorage.setItem("scroll", (ref.current?.scrollTop || 0).toString())
-    window.location.href = path
+    window.location.href = withBase(path)
   }
 
   return (

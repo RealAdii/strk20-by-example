@@ -2,7 +2,7 @@
 
 > Check what setup a recipient needs with discoverRequirement and open channels explicitly
 
-Source: https://strk20-by-example.org/sdk/setup-requirements
+Source: https://strk20.starknet.io/docs/sdk/setup-requirements
 
 Notes travel over **channels**. Before you can transfer token X to Bob, three
 things must exist: Bob's registration, a channel from you to Bob, and a

@@ -2,7 +2,7 @@
 
 > Spend private notes and transfer an amount to a recipient, with change back to you
 
-Source: https://strk20-by-example.org/sdk/transfer
+Source: https://strk20.starknet.io/docs/sdk/transfer
 
 A private transfer spends one or more of your notes and creates a new note
 for the recipient. Notes are UTXOs: consumed whole. If the inputs total more

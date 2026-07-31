@@ -2,7 +2,7 @@
 
 > Use the starknet-start useStrk20 React hooks as a convenience wrapper over the Starknet Wallet API.
 
-Source: https://strk20-by-example.org/starknet-wallet-api/starknet-start-hook
+Source: https://strk20.starknet.io/docs/starknet-wallet-api/starknet-start-hook
 
 The **`useStrk20` hooks** from
 [Starknet Start](https://starknet-innovation.github.io/starknet-start/docs/hooks/use-strk20/#hooks)

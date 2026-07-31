@@ -2,7 +2,7 @@
 
 > Withdraw private notes back to a public Starknet address as ERC-20 tokens
 
-Source: https://strk20-by-example.org/sdk/withdraw
+Source: https://strk20.starknet.io/docs/sdk/withdraw
 
 A withdrawal spends private notes and sends plain ERC-20 tokens to a public
 Starknet address. It is the exit door of the pool - and the one place where

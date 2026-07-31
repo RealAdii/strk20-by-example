@@ -2,7 +2,7 @@
 
 > Build privacy wallets on Starknet with the low-level STRK20 SDK and createPrivateTransfers
 
-Source: https://strk20-by-example.org/sdk/getting-started
+Source: https://strk20.starknet.io/docs/sdk/getting-started
 
 These pages are for teams building **privacy wallets on Starknet** or advanced
 integrations that manage their own account, keys, note discovery, and proving.

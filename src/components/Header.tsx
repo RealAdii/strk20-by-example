@@ -9,6 +9,7 @@ import Strk20 from "./svg/Strk20"
 import Search from "./svg/Search"
 import AskAi from "./AskAi"
 import { ROUTES_BY_CATEGORY, categoryRoutes, getCategoryIndexByPath } from "../nav"
+import { withBase } from "../lib/url"
 
 interface Props {
   onOpenSearch: () => void
@@ -38,11 +39,15 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
           >
             <Hamburger size={20} className={styles.hamburger} />
           </button>
-          <a href="/" className={styles.a} aria-label="STRK20 by Example home">
+          <a
+            href={withBase("/")}
+            className={styles.a}
+            aria-label="STRK20 by Example home"
+          >
             <Strk20 className={styles.logo} size={18} />
           </a>
           <span className={styles.wordmark}>
-            <a href="/" className={styles.a}>
+            <a href={withBase("/")} className={styles.a}>
               by Example
             </a>
           </span>
@@ -89,7 +94,7 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
             return (
               <a
                 key={category.tab}
-                href={first.path}
+                href={withBase(first.path)}
                 className={i == activeCategory ? styles.tabActive : styles.tab}
                 aria-current={i == activeCategory ? "page" : undefined}
               >

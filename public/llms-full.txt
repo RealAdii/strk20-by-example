@@ -1,10 +1,10 @@
 # STRK20 by Example — full text
 
-Every page of https://strk20-by-example.org, concatenated. Generated at build time.
+Every page of https://strk20.starknet.io/docs, concatenated. Generated at build time.
 
 ========================================================================
 # Introduction
-URL: https://strk20-by-example.org/
+URL: https://strk20.starknet.io/docs/
 ========================================================================
 
 STRK20 brings shielded balances, private transfers, and private DeFi to any
@@ -62,7 +62,7 @@ need to prove something to a regulator.
 
 ========================================================================
 # Actions, Phases & Proofs
-URL: https://strk20-by-example.org/actions-and-proofs
+URL: https://strk20.starknet.io/docs/actions-and-proofs
 ========================================================================
 
 Every pool transaction is a batch of **client actions**. Actions are grouped
@@ -154,14 +154,14 @@ Next: the escrowed key that makes all of this auditable -
 
 ========================================================================
 # Anonymous Airdrop
-URL: https://strk20-by-example.org/app/anonymous-airdrop
+URL: https://strk20.starknet.io/docs/app/anonymous-airdrop
 ========================================================================
 
 
 
 ========================================================================
 # Builder Privacy Overview
-URL: https://strk20-by-example.org/builder-privacy-overview
+URL: https://strk20.starknet.io/docs/builder-privacy-overview
 ========================================================================
 
 STRK20 is a privacy pool plus a small set of integration surfaces. Start with
@@ -246,7 +246,7 @@ meets the same deposit-screening requirement as hosted services.
 
 ========================================================================
 # Channels & Note Discovery
-URL: https://strk20-by-example.org/channels-and-subchannels
+URL: https://strk20.starknet.io/docs/channels-and-subchannels
 ========================================================================
 
 There is no "inbox" for private payments. Encrypted notes sit silently in the
@@ -322,7 +322,7 @@ Next: how a spend is assembled and proven -
 
 ========================================================================
 # Compliance & Auditing
-URL: https://strk20-by-example.org/compliance
+URL: https://strk20.starknet.io/docs/compliance
 ========================================================================
 
 STRK20 is private from the public, not from lawful oversight. Compliance rests
@@ -398,7 +398,7 @@ to see how the pieces fit together.
 
 ========================================================================
 # Escrow
-URL: https://strk20-by-example.org/helpers/escrow
+URL: https://strk20.starknet.io/docs/helpers/escrow
 ========================================================================
 
 The escrow helper solves a real problem: you cannot privately transfer to someone
@@ -590,7 +590,7 @@ The SDK pairs with this contract through `computeCommitmentHash`,
 
 ========================================================================
 # Anonymizer Contract Anatomy
-URL: https://strk20-by-example.org/helpers/privacy-invoke
+URL: https://strk20.starknet.io/docs/helpers/privacy-invoke
 ========================================================================
 
 Anonymizer contracts (also called **helper contracts**) are how private funds
@@ -695,7 +695,7 @@ lending integration.
 
 ========================================================================
 # Swap Helper
-URL: https://strk20-by-example.org/helpers/swap-helper
+URL: https://strk20.starknet.io/docs/helpers/swap-helper
 ========================================================================
 
 The swap helper lets pool funds trade on an external AMM without revealing the
@@ -911,7 +911,7 @@ Next: the same pattern pointed at a real lending protocol - the Vesu helper.
 
 ========================================================================
 # Vesu Lending Helper
-URL: https://strk20-by-example.org/helpers/vesu-lending-helper
+URL: https://strk20.starknet.io/docs/helpers/vesu-lending-helper
 ========================================================================
 
 The Vesu lending helper connects the privacy pool to
@@ -1080,7 +1080,7 @@ Next: the Escrow helper - a stateful helper with its own commitment scheme.
 
 ========================================================================
 # Notes & Nullifiers
-URL: https://strk20-by-example.org/notes-and-nullifiers
+URL: https://strk20.starknet.io/docs/notes-and-nullifiers
 ========================================================================
 
 A **note** is the unit of private balance inside the pool. It is an immutable
@@ -1173,7 +1173,7 @@ Next: how keys encrypt all of this - [Encryption & Viewing Keys](/viewing-keys).
 
 ========================================================================
 # Overview
-URL: https://strk20-by-example.org/overview
+URL: https://strk20.starknet.io/docs/overview
 ========================================================================
 
 Here's everything about getting started with building private applications.
@@ -1219,7 +1219,7 @@ Deposits, withdrawals, timing, and some app-side activity may still be public.
 
 ========================================================================
 # Deposit
-URL: https://strk20-by-example.org/sdk/deposit
+URL: https://strk20.starknet.io/docs/sdk/deposit
 ========================================================================
 
 A deposit moves public ERC-20 tokens into the pool and mints a private note.
@@ -1288,7 +1288,7 @@ Next: [Transfer](/sdk/transfer) a note privately to another account.
 
 ========================================================================
 # Deposit + Transfer
-URL: https://strk20-by-example.org/sdk/deposit-transfer-surplus
+URL: https://strk20.starknet.io/docs/sdk/deposit-transfer-surplus
 ========================================================================
 
 Operations on the same token compose inside one `.with(...)` block, and the
@@ -1349,7 +1349,7 @@ Next: [Withdraw](/sdk/withdraw) private funds back to a public address.
 
 ========================================================================
 # Discovery Providers
-URL: https://strk20-by-example.org/sdk/discovery-providers
+URL: https://strk20.starknet.io/docs/sdk/discovery-providers
 ========================================================================
 
 Everything on the previous page - `discoverNotes`, `discoverChannels`,
@@ -1414,7 +1414,7 @@ same wiring.
 
 ========================================================================
 # Getting Started
-URL: https://strk20-by-example.org/sdk/getting-started
+URL: https://strk20.starknet.io/docs/sdk/getting-started
 ========================================================================
 
 These pages are for teams building **privacy wallets on Starknet** or advanced
@@ -1517,7 +1517,7 @@ Next: register your viewing key so you can receive private transfers.
 
 ========================================================================
 # Multi-Operation Batches
-URL: https://strk20-by-example.org/sdk/multi-op-batch
+URL: https://strk20.starknet.io/docs/sdk/multi-op-batch
 ========================================================================
 
 One build = one transaction = one proof. Inside it you can chain any number
@@ -1589,7 +1589,7 @@ setup a recipient needs.
 
 ========================================================================
 # Discovering Notes
-URL: https://strk20-by-example.org/sdk/note-discovery
+URL: https://strk20.starknet.io/docs/sdk/note-discovery
 ========================================================================
 
 Discovery scans your channels and decrypts the notes addressed to you. It is
@@ -1670,7 +1670,7 @@ these scans.
 
 ========================================================================
 # Proving Configuration
-URL: https://strk20-by-example.org/sdk/proving-config
+URL: https://strk20.starknet.io/docs/sdk/proving-config
 ========================================================================
 
 The proving provider sends your signed invocation to a proving service,
@@ -1767,7 +1767,7 @@ This is the last page of the series - head back to
 
 ========================================================================
 # Register
-URL: https://strk20-by-example.org/sdk/register
+URL: https://strk20.starknet.io/docs/sdk/register
 ========================================================================
 
 Before an account can receive private transfers it must **register**: publish
@@ -1826,7 +1826,7 @@ Next: [Deposit](/sdk/deposit) public ERC-20 tokens into the pool.
 
 ========================================================================
 # Channels & Setup Requirements
-URL: https://strk20-by-example.org/sdk/setup-requirements
+URL: https://strk20.starknet.io/docs/sdk/setup-requirements
 ========================================================================
 
 Notes travel over **channels**. Before you can transfer token X to Bob, three
@@ -1897,7 +1897,7 @@ Next: [Discovering Notes](/sdk/note-discovery) - reading your private balance.
 
 ========================================================================
 # Transfer
-URL: https://strk20-by-example.org/sdk/transfer
+URL: https://strk20.starknet.io/docs/sdk/transfer
 ========================================================================
 
 A private transfer spends one or more of your notes and creates a new note
@@ -1968,7 +1968,7 @@ Next: [Deposit + Transfer](/sdk/deposit-transfer-surplus) in a single transactio
 
 ========================================================================
 # Withdraw
-URL: https://strk20-by-example.org/sdk/withdraw
+URL: https://strk20.starknet.io/docs/sdk/withdraw
 ========================================================================
 
 A withdrawal spends private notes and sends plain ERC-20 tokens to a public
@@ -2022,7 +2022,7 @@ many tokens in one transaction.
 
 ========================================================================
 # Starknet Wallet API
-URL: https://strk20-by-example.org/starknet-wallet-api/overview
+URL: https://strk20.starknet.io/docs/starknet-wallet-api/overview
 ========================================================================
 
 The **Starknet Wallet API** is the recommended route for most **private dapps**.
@@ -2106,7 +2106,7 @@ API with an app-specific anonymizer contract that the pool invokes atomically.
 
 ========================================================================
 # starknet.js
-URL: https://strk20-by-example.org/starknet-wallet-api/starknet-js
+URL: https://strk20.starknet.io/docs/starknet-wallet-api/starknet-js
 ========================================================================
 
 The **`starknet.js` `WalletAccountV6` API** is the direct way to reach the
@@ -2146,7 +2146,7 @@ state, ZK proof, and signature wallet-side.
 
 ========================================================================
 # starknet-start
-URL: https://strk20-by-example.org/starknet-wallet-api/starknet-start-hook
+URL: https://strk20.starknet.io/docs/starknet-wallet-api/starknet-start-hook
 ========================================================================
 
 The **`useStrk20` hooks** from
@@ -2186,7 +2186,7 @@ state, ZK proof, and signature wallet-side.
 
 ========================================================================
 # Encryption & Viewing Keys
-URL: https://strk20-by-example.org/viewing-keys
+URL: https://strk20.starknet.io/docs/viewing-keys
 ========================================================================
 
 Every participant in the pool has a **viewing keypair**:
@@ -2262,7 +2262,7 @@ Next: where encrypted notes are filed and how recipients find them -
 
 ========================================================================
 # What is STRK20?
-URL: https://strk20-by-example.org/what-is-strk20
+URL: https://strk20.starknet.io/docs/what-is-strk20
 ========================================================================
 
 The foundation for all privacy on Starknet: the layer everything above reads from

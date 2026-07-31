@@ -3,6 +3,7 @@ import { useLocation, matchPath } from "react-router-dom"
 import styles from "./SideNav.module.css"
 import { useAppContext } from "../contexts/AppContext"
 import { Route, ROUTES_BY_CATEGORY } from "../nav"
+import { withBase } from "../lib/url"
 
 interface Props {
   onClick: (path: string) => void
@@ -32,7 +33,11 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
 
           return (
             <li className={active ? styles.listItemActive : styles.listItem} key={path}>
-              <a className={styles.link} href={path} onClick={(e) => _onClick(e, path)}>
+              <a
+                className={styles.link}
+                href={withBase(path)}
+                onClick={(e) => _onClick(e, path)}
+              >
                 {title}
               </a>
             </li>

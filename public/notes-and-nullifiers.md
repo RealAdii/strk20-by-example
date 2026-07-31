@@ -2,7 +2,7 @@
 
 > The UTXO note model - how private balances are stored, spent and protected from double-spending
 
-Source: https://strk20-by-example.org/notes-and-nullifiers
+Source: https://strk20.starknet.io/docs/notes-and-nullifiers
 
 A **note** is the unit of private balance inside the pool. It is an immutable
 record of three things:

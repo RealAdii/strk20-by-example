@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://strk20-by-example.org/sitemap.xml
+Sitemap: https://strk20.starknet.io/docs/sitemap.xml

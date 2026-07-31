@@ -2,7 +2,7 @@
 
 > Choose the right STRK20 integration path: Starknet Wallet API, anonymizer contracts, building privacy wallets, sub-accounts, or prover infrastructure.
 
-Source: https://strk20-by-example.org/builder-privacy-overview
+Source: https://strk20.starknet.io/docs/builder-privacy-overview
 
 STRK20 is a privacy pool plus a small set of integration surfaces. Start with
 the narrowest surface that keeps user keys in the right place and only move to a

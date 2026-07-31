@@ -2,7 +2,7 @@
 
 > Earn lending yield privately - the official reference helper for Vesu ERC-4626 vaults
 
-Source: https://strk20-by-example.org/helpers/vesu-lending-helper
+Source: https://strk20.starknet.io/docs/helpers/vesu-lending-helper
 
 The Vesu lending helper connects the privacy pool to
 [Vesu](https://vesu.xyz), a permissionless lending protocol whose pools are

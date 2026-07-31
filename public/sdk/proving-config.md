@@ -2,7 +2,7 @@
 
 > Configure ProvingServiceProofProvider, pick provingBlockId, and submit proofs correctly
 
-Source: https://strk20-by-example.org/sdk/proving-config
+Source: https://strk20.starknet.io/docs/sdk/proving-config
 
 The proving provider sends your signed invocation to a proving service,
 which executes it in a virtual Starknet environment and returns a STARK

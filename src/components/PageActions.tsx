@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
 import Sparkle from "./svg/Sparkle"
 import styles from "./PageActions.module.css"
+import { withBase } from "../lib/url"
 
 interface Props {
   title: string
@@ -13,7 +14,8 @@ interface Props {
 // an agent can fetch — not the blob it used to be, which existed only inside
 // one browser tab.
 function markdownUrl(pathname: string): string {
-  return pathname == "/" ? "/index.md" : `${pathname.replace(/\/$/, "")}.md`
+  const rel = pathname == "/" ? "/index.md" : `${pathname.replace(/\/$/, "")}.md`
+  return withBase(rel)
 }
 
 // The row under the page title: hand the page to an assistant, or take it

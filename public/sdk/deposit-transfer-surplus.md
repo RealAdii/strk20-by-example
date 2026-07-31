@@ -2,7 +2,7 @@
 
 > Deposit and transfer in one transaction, with surplusTo directing the remainder
 
-Source: https://strk20-by-example.org/sdk/deposit-transfer-surplus
+Source: https://strk20.starknet.io/docs/sdk/deposit-transfer-surplus
 
 Operations on the same token compose inside one `.with(...)` block, and the
 whole batch settles atomically in one transaction. The classic case: deposit

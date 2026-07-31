@@ -2,7 +2,7 @@
 
 > A deferred-delivery escrow anonymizer contract - send privately to someone who has not registered yet
 
-Source: https://strk20-by-example.org/helpers/escrow
+Source: https://strk20.starknet.io/docs/helpers/escrow
 
 The escrow helper solves a real problem: you cannot privately transfer to someone
 who has not registered a viewing key yet. Instead, you **escrow the funds behind a

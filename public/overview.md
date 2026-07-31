@@ -2,7 +2,7 @@
 
 > A concise builder overview for choosing the right STRK20 integration route
 
-Source: https://strk20-by-example.org/overview
+Source: https://strk20.starknet.io/docs/overview
 
 Here's everything about getting started with building private applications.
 

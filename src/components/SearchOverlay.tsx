@@ -3,6 +3,7 @@ import { search, unique } from "../lib/search"
 import { ROUTES, ROUTES_BY_CATEGORY, Route } from "../nav"
 import Search from "./svg/Search"
 import styles from "./SearchOverlay.module.css"
+import { withBase } from "../lib/url"
 
 // path -> the section it lives under, for the result breadcrumb
 const SECTION_BY_PATH: { [path: string]: string } = {}
@@ -69,7 +70,7 @@ const SearchOverlay: React.FC<Props> = ({ open, onClose }) => {
   }
 
   function go(route: Route) {
-    window.location.href = route.path
+    window.location.href = withBase(route.path)
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
@@ -121,7 +122,7 @@ const SearchOverlay: React.FC<Props> = ({ open, onClose }) => {
               {results.map((route, i) => (
                 <li key={route.path}>
                   <a
-                    href={route.path}
+                    href={withBase(route.path)}
                     className={i == selected ? styles.hitActive : styles.hit}
                     onMouseEnter={() => setSelected(i)}
                     onClick={(e) => {

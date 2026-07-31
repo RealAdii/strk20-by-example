@@ -2,7 +2,7 @@
 
 > How viewing keys, domain-separated masking and ECDH on the STARK curve keep note data private
 
-Source: https://strk20-by-example.org/viewing-keys
+Source: https://strk20.starknet.io/docs/viewing-keys
 
 Every participant in the pool has a **viewing keypair**:
 

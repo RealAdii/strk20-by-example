@@ -2,7 +2,7 @@
 
 > Selective disclosure via an auditor-escrowed viewing key, fund tracing, and known privacy limits
 
-Source: https://strk20-by-example.org/compliance
+Source: https://strk20.starknet.io/docs/compliance
 
 STRK20 is private from the public, not from lawful oversight. Compliance rests
 on two mechanisms: every deposit is screened before it enters the pool, and
