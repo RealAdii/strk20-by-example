@@ -11,7 +11,7 @@
     "build": "tsc && vite build",
     "postbuild": "npm run lint && npm run copy-index && npm run copy-index-to-404",
     "copy-index": "ts-node scripts/build.ts",
-    "copy-index-to-404": "cp build/index.html build/404.html",
+    "copy-index-to-404": "cp \"build${VITE_PUBLIC_URL:-}/index.html\" \"build${VITE_PUBLIC_URL:-}/404.html\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "page": "ts-node --project ./scripts/tsconfig.json scripts/md-to-react.ts",

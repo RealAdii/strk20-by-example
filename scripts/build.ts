@@ -10,7 +10,12 @@ const { readFile, writeFile } = fs.promises
 import { getFiles } from "./lib"
 
 async function main() {
-  const BUILD_DIR = path.join(__dirname, "..", "build")
+  const BUILD_DIR = path.join(
+    __dirname,
+    "..",
+    "build",
+    process.env.VITE_PUBLIC_URL || "",
+  )
   const index = (await readFile(path.join(BUILD_DIR, "index.html"))).toString()
 
   const files = await getFiles(

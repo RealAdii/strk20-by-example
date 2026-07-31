@@ -8,7 +8,11 @@ export default defineConfig(() => {
     // src/lib/url.ts reads it back out of BASE_URL for hand-built hrefs.
     base: process.env.VITE_PUBLIC_URL || "/",
     build: {
-      outDir: "build",
+      // Nest the output under the prefix as well. `base` only rewrites the URLs
+      // inside the HTML; without this the deploy root still holds /assets while
+      // the HTML asks for /docs/assets, and the SPA fallback answers a JS
+      // module request with index.html.
+      outDir: `build${process.env.VITE_PUBLIC_URL || ""}`,
     },
     plugins: [react()],
   }
