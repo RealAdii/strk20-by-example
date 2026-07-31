@@ -69,9 +69,9 @@ const Example: React.FC<Props> = ({
 
           {markdown ? <PageActions title={title} markdown={markdown} /> : null}
 
-          {/* On every page, under the action row. Open on the introduction,
-              a slim bar elsewhere so it never buries the page's own prose. */}
-          <InteractiveEmbed defaultOpen={isHome} />
+          {/* Introduction only: on a page about notes and nullifiers the
+              playground is a distraction, not a way in. */}
+          {isHome ? <InteractiveEmbed /> : null}
 
           {githubLink ? (
             <div className={styles.sourceLink}>

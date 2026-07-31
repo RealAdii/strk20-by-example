@@ -3,18 +3,11 @@ import styles from "./InteractiveEmbed.module.css"
 
 const SRC = "https://strk20.starknet.io/interactive"
 
-interface Props {
-  // Open on arrival, as on the introduction. Elsewhere it starts as a slim bar
-  // so the playground never pushes a page's actual prose below the fold, and
-  // the remote WebGL scene only boots for readers who ask for it.
-  defaultOpen?: boolean
-}
-
-// The live playground, embedded so a page can be played with rather than only
-// read. One iframe, whose container swaps class on expand: remounting it would
-// reload the playground and throw away whatever the reader had set up.
-const InteractiveEmbed: React.FC<Props> = ({ defaultOpen = false }) => {
-  const [open, setOpen] = useState(defaultOpen)
+// The live playground, embedded on the introduction so the site can be played
+// with before it has to be read. One iframe, whose container swaps class on
+// expand: remounting it would reload the playground and throw away whatever
+// the reader had set up.
+const InteractiveEmbed: React.FC = () => {
   const [expanded, setExpanded] = useState(false)
 
   useEffect(() => {
@@ -30,25 +23,12 @@ const InteractiveEmbed: React.FC<Props> = ({ defaultOpen = false }) => {
     return () => document.removeEventListener("keydown", onKeyDown)
   }, [expanded])
 
-  const wrapClass = expanded
-    ? styles.wrapExpanded
-    : open
-      ? styles.wrap
-      : styles.wrapClosed
-
   return (
-    <div className={wrapClass}>
+    <div className={expanded ? styles.wrapExpanded : styles.wrap}>
       <div className={styles.bar}>
-        {open ? (
-          <span className={styles.label}>
-            <span className={styles.tick}>◢</span> Try it live
-          </span>
-        ) : (
-          <button className={styles.open} onClick={() => setOpen(true)}>
-            <span className={styles.tick}>◢</span> Try it live
-            <span className={styles.openHint}>Load the interactive pool</span>
-          </button>
-        )}
+        <span className={styles.label}>
+          <span className={styles.tick}>◢</span> Try it live
+        </span>
 
         <a
           className={styles.newTab}
@@ -65,7 +45,6 @@ const InteractiveEmbed: React.FC<Props> = ({ defaultOpen = false }) => {
           aria-expanded={expanded}
           title={expanded ? "Collapse (Esc)" : "Expand"}
           aria-label={expanded ? "Collapse playground" : "Expand playground"}
-          hidden={!open}
         >
           {expanded ? (
             <svg
@@ -97,16 +76,13 @@ const InteractiveEmbed: React.FC<Props> = ({ defaultOpen = false }) => {
         </button>
       </div>
 
-      {/* mounted only once opened, so a closed bar costs nothing */}
-      {open ? (
-        <iframe
-          className={styles.frame}
-          src={SRC}
-          title="STRK20 interactive playground"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      ) : null}
+      <iframe
+        className={styles.frame}
+        src={SRC}
+        title="STRK20 interactive playground"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
     </div>
   )
 }
