@@ -57,16 +57,16 @@
   color: var(--color-muted);
 }
 
-/* Page title — display, uppercase, tight, with an orange top rule above it */
+/* Page title — sentence case in the body face, with the orange rule kept as
+   the brand marker on the title block. */
 .title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.025em;
-  line-height: 1.02;
-  font-size: clamp(26px, 3.2vw, 38px);
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  font-size: clamp(30px, 3.4vw, 42px);
   text-wrap: balance;
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   padding-top: 18px;
   border-top: 2px solid var(--accent);
 }
@@ -90,11 +90,11 @@
 .content h2,
 .content h3,
 .content h4 {
-  max-width: 62ch;
+  max-width: 68ch;
 }
 .content h2,
 .content h3 {
-  max-width: 52ch;
+  max-width: 56ch;
 }
 
 /* source pointer reads as a mono technical accent, not italic prose */
@@ -168,11 +168,10 @@
   color: var(--accent-strong);
 }
 .pagerTitle {
-  font-family: var(--font-display);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
   color: var(--color);
   font-size: 15px;
 }
