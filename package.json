@@ -2,7 +2,7 @@
   "name": "strk20-by-example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://strk20-by-example.org",
+  "homepage": "https://strk20.starknet.io/docs",
   "scripts": {
     "start": "vite",
     "preview": "vite preview",

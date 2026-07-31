@@ -6,13 +6,13 @@
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "strk20-by-example.vercel.app" }],
-      "destination": "https://strk20-by-example.org/$1",
+      "destination": "https://strk20.starknet.io/docs/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "strk20-by-example-gray.vercel.app" }],
-      "destination": "https://strk20-by-example.org/$1",
+      "destination": "https://strk20.starknet.io/docs/$1",
       "permanent": true
     },
     {
@@ -20,7 +20,13 @@
       "has": [
         { "type": "host", "value": "strk20-by-example-starkiences-projects.vercel.app" }
       ],
-      "destination": "https://strk20-by-example.org/$1",
+      "destination": "https://strk20.starknet.io/docs/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "strk20-by-example-preview.vercel.app" }],
+      "destination": "https://strk20.starknet.io/docs/$1",
       "permanent": true
     }
   ],
