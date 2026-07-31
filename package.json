@@ -15,11 +15,12 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "page": "ts-node --project ./scripts/tsconfig.json scripts/md-to-react.ts",
-    "pages:all": "ts-node --project ./scripts/tsconfig.json scripts/md-to-react.ts --all",
+    "pages:all": "ts-node --project ./scripts/tsconfig.json scripts/md-to-react.ts --all && npm run agent-files",
     "copy:contracts": "ts-node --project ./scripts/tsconfig.json scripts/copy.ts",
     "routes": "ts-node --project ./scripts/tsconfig.json scripts/build-routes.ts",
     "search": "ts-node --project ./scripts/tsconfig.json scripts/build-search-index.ts",
-    "lint": "prettier --write src"
+    "lint": "prettier --write src",
+    "agent-files": "ts-node --project ./scripts/tsconfig.json scripts/build-agent-files.ts"
   },
   "eslintConfig": {
     "extends": "react-app"

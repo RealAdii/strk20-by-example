@@ -1,0 +1,39 @@
+# STRK20 by Example
+
+> Learn Starknet Privacy (STRK20) with small, runnable examples. Private
+> transfers on a public chain, Cairo anonymizer contracts, and the
+> wallet-builder SDK.
+
+This site is a client-rendered app, so fetch the .md files below rather
+than the HTML routes. https://strk20-by-example.org/llms-full.txt has every page in one file.
+
+## Pages
+
+- [Introduction](https://strk20-by-example.org/index.md): Learn Starknet Privacy (STRK20) with simple, runnable examples covering private transfers on a public chain, Cairo anonymizer contracts, and wallet-builder SDK flows
+- [Actions, Phases & Proofs](https://strk20-by-example.org/actions-and-proofs.md): The phased action model, the per-token balance invariant, and how transactions are proven with Stwo
+- [Anonymous Airdrop](https://strk20-by-example.org/app/anonymous-airdrop.md): Placeholder page for anonymous airdrop examples
+- [Builder Privacy Overview](https://strk20-by-example.org/builder-privacy-overview.md): Choose the right STRK20 integration path: Starknet Wallet API, anonymizer contracts, building privacy wallets, sub-accounts, or prover infrastructure.
+- [Channels & Note Discovery](https://strk20-by-example.org/channels-and-subchannels.md): Directional channels, per-token subchannels and the scan algorithm recipients use to find their notes
+- [Compliance & Auditing](https://strk20-by-example.org/compliance.md): Selective disclosure via an auditor-escrowed viewing key, fund tracing, and known privacy limits
+- [Escrow](https://strk20-by-example.org/helpers/escrow.md): A deferred-delivery escrow anonymizer contract - send privately to someone who has not registered yet
+- [Anonymizer Contract Anatomy](https://strk20-by-example.org/helpers/privacy-invoke.md): The privacy_invoke pattern - how the pool calls external contracts and credits open notes
+- [Swap Helper](https://strk20-by-example.org/helpers/swap-helper.md): A DEX swap anonymizer contract - trade privately through any AMM using the balance-delta idiom
+- [Vesu Lending Helper](https://strk20-by-example.org/helpers/vesu-lending-helper.md): Earn lending yield privately - the official reference helper for Vesu ERC-4626 vaults
+- [Notes & Nullifiers](https://strk20-by-example.org/notes-and-nullifiers.md): The UTXO note model - how private balances are stored, spent and protected from double-spending
+- [Overview](https://strk20-by-example.org/overview.md): A concise builder overview for choosing the right STRK20 integration route
+- [Deposit](https://strk20-by-example.org/sdk/deposit.md): Approve the pool, then deposit public ERC-20 tokens into a private note
+- [Deposit + Transfer](https://strk20-by-example.org/sdk/deposit-transfer-surplus.md): Deposit and transfer in one transaction, with surplusTo directing the remainder
+- [Discovery Providers](https://strk20-by-example.org/sdk/discovery-providers.md): Choose between IndexerDiscoveryProvider and ContractDiscoveryProvider
+- [Getting Started](https://strk20-by-example.org/sdk/getting-started.md): Build privacy wallets on Starknet with the low-level STRK20 SDK and createPrivateTransfers
+- [Multi-Operation Batches](https://strk20-by-example.org/sdk/multi-op-batch.md): Chain several operations on one token and several tokens in a single transaction
+- [Discovering Notes](https://strk20-by-example.org/sdk/note-discovery.md): Scan your channels for unspent notes with discoverNotes and discoverChannels
+- [Proving Configuration](https://strk20-by-example.org/sdk/proving-config.md): Configure ProvingServiceProofProvider, pick provingBlockId, and submit proofs correctly
+- [Register](https://strk20-by-example.org/sdk/register.md): Register your viewing key in the privacy pool with the builder or autoRegister
+- [Channels & Setup Requirements](https://strk20-by-example.org/sdk/setup-requirements.md): Check what setup a recipient needs with discoverRequirement and open channels explicitly
+- [Transfer](https://strk20-by-example.org/sdk/transfer.md): Spend private notes and transfer an amount to a recipient, with change back to you
+- [Withdraw](https://strk20-by-example.org/sdk/withdraw.md): Withdraw private notes back to a public Starknet address as ERC-20 tokens
+- [Starknet Wallet API](https://strk20-by-example.org/starknet-wallet-api/overview.md): The standard route for private dapps on Starknet: ask a privacy-enabled wallet to shield, transfer, and withdraw via starknet.js.
+- [starknet.js](https://strk20-by-example.org/starknet-wallet-api/starknet-js.md): Call the Starknet Wallet API directly with starknet.js WalletAccountV6 for non-React apps or finer control.
+- [starknet-start](https://strk20-by-example.org/starknet-wallet-api/starknet-start-hook.md): Use the starknet-start useStrk20 React hooks as a convenience wrapper over the Starknet Wallet API.
+- [Encryption & Viewing Keys](https://strk20-by-example.org/viewing-keys.md): How viewing keys, domain-separated masking and ECDH on the STARK curve keep note data private
+- [What is STRK20?](https://strk20-by-example.org/what-is-strk20.md): An introduction to Starknet Privacy - confidential token transfers on a public chain

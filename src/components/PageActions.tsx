@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import { useLocation } from "react-router-dom"
 import Sparkle from "./svg/Sparkle"
 import styles from "./PageActions.module.css"
 
@@ -7,21 +8,21 @@ interface Props {
   markdown: string
 }
 
+// The build publishes every page's source at a stable path (see
+// scripts/build-agent-files.ts), so this is a real URL a reader can share and
+// an agent can fetch — not the blob it used to be, which existed only inside
+// one browser tab.
+function markdownUrl(pathname: string): string {
+  return pathname == "/" ? "/index.md" : `${pathname.replace(/\/$/, "")}.md`
+}
+
 // The row under the page title: hand the page to an assistant, or take it
 // away as markdown. All three work off the raw markdown the build emits
 // alongside the rendered html.
 const PageActions: React.FC<Props> = ({ title, markdown }) => {
   const [copied, setCopied] = useState(false)
-  const [mdUrl, setMdUrl] = useState("")
-
-  // A blob URL renders the source as plain text in a new tab, with no route
-  // or server endpoint to add.
-  useEffect(() => {
-    const blob = new Blob([markdown], { type: "text/plain;charset=utf-8" })
-    const url = URL.createObjectURL(blob)
-    setMdUrl(url)
-    return () => URL.revokeObjectURL(url)
-  }, [markdown])
+  const location = useLocation()
+  const mdUrl = markdownUrl(location.pathname)
 
   function askAboutPage() {
     const prompt = `I'm reading the STRK20 (Starknet Privacy) docs page "${title}" at ${window.location.href}. Help me understand it:\n\n${markdown.slice(0, 6000)}`
