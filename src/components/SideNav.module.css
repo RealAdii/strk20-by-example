@@ -1,49 +1,12 @@
-/* Indent scale — every label lands on one of two x positions:
-     10px  section headings and top-level links (flush, as Vue does it)
-     24px  group labels and the links nested under them
-   Keeping labels aligned is what makes a deep rail feel calm. */
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 6px 0;
-}
-.nestedList {
-  list-style: none;
-  padding: 0 0 0 14px;
-  margin: 0 0 10px 0;
-}
+/* Three levels, each separated by size and weight rather than by all being
+   bold: section label (small, bold) > group title (full size, medium) >
+   link (full size, regular) > nested link (smaller, dimmer).
+   Indents land on two x positions: 10px and 24px. */
 
-/* Sections separate by air alone — with readable headings the rules were
-   doing work the whitespace already does. */
-.section {
-  padding-top: 26px;
-}
-.section:first-of-type {
-  padding-top: 0;
-}
-
-/* Rail header — just the collapse control, right-aligned. */
 .railHeader {
   display: flex;
   justify-content: flex-end;
   padding: 0 6px 6px 10px;
-}
-
-/* Section heading. Was mono 10px uppercase tracked 0.16em, which at that size
-   is a label to decode rather than a word to read — and it forced the longer
-   sections onto two cramped lines. Now a plain bold sentence-case word at
-   reading size, the way Vue's rail does it. */
-.category {
-  padding: 0 10px 4px;
-  color: var(--color);
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.4;
-}
-.categoryLabel {
-  min-width: 0;
 }
 
 /* Collapse lives in the rail, where the thing it collapses is. */
@@ -52,7 +15,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: -3px;
   padding: 3px;
   background: transparent;
   border: 1px solid transparent;
@@ -64,101 +26,63 @@
     border-color 0.15s var(--ease);
 }
 .collapse:hover {
-  color: var(--accent-strong);
+  color: var(--color);
   border-color: var(--border-color);
 }
-
-/* On the mobile drawer the backdrop and the header button already close it. */
 @media (max-width: 900px) {
   .collapse {
     display: none;
   }
 }
-.tick {
-  color: var(--accent);
-  letter-spacing: 0;
-  line-height: 1.5;
-  flex-shrink: 0;
+
+/* Sections separate by air alone. */
+.section {
+  padding-top: 26px;
+}
+.section:first-of-type {
+  padding-top: 0;
 }
 
-/* Group parent — the "Use Payment Links" row: sentence case, medium weight,
-   full-strength ink, with the disclosure chevron in a left gutter so the
-   label still aligns to the 25px column. */
+/* Section label — small and bold, so it reads as the divider it is instead of
+   competing with the group titles underneath it. */
+.category {
+  padding: 0 10px 6px;
+  color: var(--color);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.4;
+}
+
+/* Group title — a parent, not a heading: full reading size at medium weight,
+   no disclosure control because nothing collapses any more. */
 .group {
-  margin: 6px 0 10px 0;
+  margin: 14px 0 6px;
 }
-
-/* Accordion: 180ms is inside the dropdown budget and stops the rows below
-   from teleporting when a group opens. grid 0fr->1fr collapses to content
-   height without measuring it; visibility trails the collapse so hidden
-   links leave the tab order without cutting the animation short. */
-.collapsible,
-.collapsibleOpen {
-  display: grid;
-  transition:
-    grid-template-rows 180ms var(--ease),
-    opacity 180ms var(--ease);
-}
-.collapsible {
-  grid-template-rows: 0fr;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    grid-template-rows 180ms var(--ease),
-    opacity 180ms var(--ease),
-    visibility 0s 180ms;
-}
-.collapsibleOpen {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  visibility: visible;
-}
-.collapsibleInner {
-  overflow: hidden;
-  min-height: 0;
-}
-
 .groupTitle {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-  width: 100%;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  text-align: left;
+  padding: 6px 10px;
+  color: var(--color);
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0;
-  color: var(--color);
-  padding: 8px 10px;
-  margin: 0;
   line-height: 1.4;
-  transition: color 0.15s var(--ease);
 }
-.groupTitle:hover {
-  color: var(--accent-strong);
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 6px 0;
 }
-.groupChevron,
-.groupChevronOpen {
-  width: 14px;
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1;
-  color: var(--color-faint);
-  transition: transform 0.2s var(--ease);
+.nestedList {
+  list-style: none;
+  padding: 0 0 0 14px;
+  margin: 0 0 4px 0;
 }
-.groupChevron {
-  transform: rotate(0deg);
-}
-.groupChevronOpen {
-  transform: rotate(90deg);
-}
-.groupLabel {
-  flex: 1;
-  min-width: 0;
+.list li,
+.nestedList li {
+  margin: 0;
 }
 
 .listItem,
@@ -172,10 +96,11 @@
 }
 .listItem:hover {
   background-color: color-mix(in srgb, var(--color) 5%, transparent);
-  box-shadow: inset 2px 0 0 var(--border-color);
 }
+/* Active: a single hairline accent rule and brighter ink. The orange-tinted
+   background wash it used to carry made the accent shout across the rail. */
 .listItemActive {
-  background: linear-gradient(90deg, var(--link-active-color), transparent 85%);
+  background-color: color-mix(in srgb, var(--color) 6%, transparent);
   box-shadow: inset 2px 0 0 var(--accent);
 }
 
@@ -184,7 +109,6 @@
 .link {
   display: block;
   width: 100%;
-  /* flush with the section heading above it, like Vue's rail */
   padding: 8px 10px;
   font-size: 14px;
   font-weight: 400;
@@ -206,8 +130,7 @@
   font-weight: 500;
 }
 
-/* Children read a step quieter than their parent — the hierarchy comes from
-   weight and ink, not from size alone. */
+/* Nested links read a step quieter and smaller than their parent. */
 .nestedList .link {
   font-size: 13.5px;
 }

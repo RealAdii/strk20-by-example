@@ -133,8 +133,10 @@ body.light {
   border: 3px solid transparent;
   background-clip: content-box;
 }
+/* Was var(--accent): a hovered scrollbar became a full-height orange bar down
+   the edge of the rail, easily the loudest thing on screen. */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent);
+  background-color: var(--color-faint);
 }
 ::-webkit-scrollbar-track {
   background: transparent;

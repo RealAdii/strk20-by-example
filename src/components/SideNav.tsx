@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useLocation, matchPath } from "react-router-dom"
 import styles from "./SideNav.module.css"
 import { useAppContext } from "../contexts/AppContext"
@@ -8,46 +8,15 @@ interface Props {
   onClick: (path: string) => void
 }
 
-const STORAGE_KEY = "sideNavExpanded"
-
-function groupKey(title: string): string {
-  return `grp:${title}`
-}
-
-function readOverrides(): { [key: string]: boolean } {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}")
-  } catch (error) {
-    return {}
-  }
-}
-
-// The rail carries the whole site: every section, in reading order. The
-// product tabs above mark where you are rather than filtering what's listed.
+// The rail carries the whole site: every section, in reading order, always
+// open. Nothing here collapses — the product tabs above mark where you are
+// rather than filtering what's listed.
 const SideNav: React.FC<Props> = ({ onClick }) => {
   const location = useLocation()
   const { toggleSideNav } = useAppContext()
 
   function isActive(path: string) {
     return !!matchPath(path, location.pathname)
-  }
-
-  const [overrides, setOverrides] = useState<{ [key: string]: boolean }>(readOverrides)
-
-  // Everything starts open: the rail's job here is to show the whole site at
-  // a glance. Collapsing is available, just not the default.
-  function expanded(key: string): boolean {
-    return overrides[key] ?? true
-  }
-
-  function toggle(key: string) {
-    const next = { ...overrides, [key]: !expanded(key) }
-    setOverrides(next)
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
-    } catch (error) {
-      // non-fatal: the rail just won't remember across reloads
-    }
   }
 
   function _onClick(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, path: string) {
@@ -109,34 +78,12 @@ const SideNav: React.FC<Props> = ({ onClick }) => {
 
             {routes.length > 0 && renderRoutes(routes)}
 
-            {groups.map((group) => {
-              const gKey = groupKey(group.title)
-              const gOpen = expanded(gKey)
-
-              return (
-                <div className={styles.group} key={gKey}>
-                  <button
-                    className={styles.groupTitle}
-                    onClick={() => toggle(gKey)}
-                    aria-expanded={gOpen}
-                  >
-                    <span
-                      className={gOpen ? styles.groupChevronOpen : styles.groupChevron}
-                    >
-                      ›
-                    </span>
-                    <span className={styles.groupLabel}>{group.title}</span>
-                  </button>
-                  {/* grid 0fr->1fr collapses to content height without anyone
-                      measuring it; the list stays mounted so it animates */}
-                  <div className={gOpen ? styles.collapsibleOpen : styles.collapsible}>
-                    <div className={styles.collapsibleInner}>
-                      {renderRoutes(group.routes, true)}
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+            {groups.map((group) => (
+              <div className={styles.group} key={group.title}>
+                <div className={styles.groupTitle}>{group.title}</div>
+                {renderRoutes(group.routes, true)}
+              </div>
+            ))}
           </div>
         )
       })}
