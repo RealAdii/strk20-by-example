@@ -17,11 +17,6 @@
   }
 }
 
-/* split pages give the whole width to prose + code */
-.bodyWide {
-  display: block;
-}
-
 .content {
   position: relative;
   min-width: 0;
