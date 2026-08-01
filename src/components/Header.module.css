@@ -62,9 +62,6 @@
   display: inline-flex;
   align-items: center;
 }
-.logo {
-  display: block;
-}
 
 .wordmark {
   flex-shrink: 0;
@@ -291,9 +288,6 @@
 }
 
 @media (max-width: 560px) {
-  .logo {
-    height: 15px !important;
-  }
   .searchLabel {
     display: none;
   }

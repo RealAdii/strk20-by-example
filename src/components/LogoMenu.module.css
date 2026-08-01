@@ -1,0 +1,76 @@
+.component {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .trigger img {
+    height: 15px !important;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 200;
+  min-width: 216px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-sm);
+  box-shadow: 0 26px 60px -26px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  font-family: var(--font-body);
+}
+
+.heading {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  padding: 8px 10px 7px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  color: var(--color);
+  font-size: 13.5px;
+  box-sizing: border-box;
+  transition: background 0.15s var(--ease);
+}
+.item:visited {
+  color: var(--color);
+}
+.item:hover {
+  background: var(--accent-soft);
+}
+
+.ext {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--color-faint);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 6px 4px;
+}

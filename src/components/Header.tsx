@@ -5,9 +5,9 @@ import Hamburger from "./svg/Hamburger"
 import styles from "./Header.module.css"
 import DarkMode from "./svg/DarkMode"
 import LightMode from "./svg/LightMode"
-import Strk20 from "./svg/Strk20"
 import Search from "./svg/Search"
 import AskAi from "./AskAi"
+import LogoMenu from "./LogoMenu"
 import { ROUTES_BY_CATEGORY, categoryRoutes, getCategoryIndexByPath } from "../nav"
 import { withBase } from "../lib/url"
 
@@ -39,13 +39,7 @@ const Header: React.FC<Props> = ({ onOpenSearch }) => {
           >
             <Hamburger size={20} className={styles.hamburger} />
           </button>
-          <a
-            href={withBase("/")}
-            className={styles.a}
-            aria-label="STRK20 by Example home"
-          >
-            <Strk20 className={styles.logo} size={18} />
-          </a>
+          <LogoMenu />
           <span className={styles.wordmark}>
             <a href={withBase("/")} className={styles.a}>
               by Example
